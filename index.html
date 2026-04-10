@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hex Industries</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
 body {
   margin: 0;
@@ -7,70 +15,128 @@ body {
   overflow-x: hidden;
 }
 
+/* HEADER */
 header {
   padding: 20px 50px;
-  font-size: 18px;
   letter-spacing: 2px;
-  opacity: 0;
-  animation: fadeIn 1.5s ease forwards;
 }
 
-/* HERO */
-.hero {
+/* HERO VIDEO */
+.hero-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  filter: brightness(40%);
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0,0,0,0.2), rgba(0,0,0,0.9));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
   padding: 140px 50px;
   font-size: 52px;
   font-weight: 700;
   max-width: 900px;
-  line-height: 1.2;
 
   opacity: 0;
   transform: translateY(60px);
-  animation: heroReveal 1.8s ease forwards;
-  animation-delay: 0.5s;
+  animation: fadeUp 1.5s ease forwards;
 }
 
 /* SECTIONS */
 .section {
   padding: 100px 50px;
   opacity: 0;
-  transform: translateY(80px) scale(0.98);
-  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(60px);
+  transition: all 1s ease;
 }
 
 .section.show {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
 .title {
   font-size: 28px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 footer {
   padding: 50px;
   color: #666;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 1s ease;
 }
 
-footer.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* KEYFRAMES */
-@keyframes heroReveal {
+/* ANIMATION */
+@keyframes fadeUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
 </style>
+</head>
+
+<body>
+
+<header>HEX INDUSTRIES</header>
+
+<div class="hero-container">
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+
+  <div class="hero-content">
+    Engineering the future of aerospace and autonomous systems.
+  </div>
+</div>
+
+<div class="section">
+  <div class="title">What We Do</div>
+  <p>Advanced aerospace systems and autonomous technologies.</p>
+</div>
+
+<div class="section">
+  <div class="title">Systems</div>
+  <p>UAVs, AI-driven platforms, and propulsion systems.</p>
+</div>
+
+<div class="section">
+  <div class="title">About</div>
+  <p>Hex Industries is focused on next-generation defense innovation.</p>
+</div>
+
+<footer>© 2026 Hex Industries</footer>
+
+<script>
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll', () => {
+  const trigger = window.innerHeight * 0.85;
+
+  sections.forEach(sec => {
+    if (sec.getBoundingClientRect().top < trigger) {
+      sec.classList.add('show');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
