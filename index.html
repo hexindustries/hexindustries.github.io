@@ -1,118 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Hex Industries</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-
 <style>
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background: #0a0a0a;
   color: #e5e5e5;
+  overflow-x: hidden;
 }
 
-/* HEADER */
 header {
   padding: 20px 50px;
   font-size: 18px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
 }
 
 /* HERO */
 .hero {
-  padding: 120px 50px;
-  font-size: 48px;
+  padding: 140px 50px;
+  font-size: 52px;
   font-weight: 700;
   max-width: 900px;
+  line-height: 1.2;
+
   opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 1.2s ease forwards;
+  transform: translateY(60px);
+  animation: heroReveal 1.8s ease forwards;
+  animation-delay: 0.5s;
 }
 
 /* SECTIONS */
 .section {
-  padding: 80px 50px;
+  padding: 100px 50px;
   opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
+  transform: translateY(80px) scale(0.98);
+  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .section.show {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .title {
-  font-size: 26px;
-  margin-bottom: 20px;
+  font-size: 28px;
+  margin-bottom: 25px;
 }
 
 footer {
-  padding: 40px 50px;
-  font-size: 14px;
-  color: #777;
+  padding: 50px;
+  color: #666;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
 }
 
-/* ANIMATION KEYFRAME */
-@keyframes fadeUp {
+footer.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* KEYFRAMES */
+@keyframes heroReveal {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
 </style>
-</head>
-
-<body>
-
-<header>HEX INDUSTRIES</header>
-
-<div class="hero">
-  Engineering the future of aerospace and autonomous systems.
-</div>
-
-<div class="section">
-  <div class="title">What We Do</div>
-  <p>We design advanced aerospace platforms, autonomous systems, and defense technologies for next-generation missions.</p>
-</div>
-
-<div class="section">
-  <div class="title">Systems</div>
-  <p>Unmanned aerial systems, AI-driven control systems, and advanced propulsion technologies.</p>
-</div>
-
-<div class="section">
-  <div class="title">Projects</div>
-  <p>Concept development of next-generation aerial systems and autonomous defense platforms.</p>
-</div>
-
-<div class="section">
-  <div class="title">About</div>
-  <p>Hex Industries is an emerging aerospace and defense company focused on innovation, precision, and mission readiness.</p>
-</div>
-
-<footer>
-  © 2026 Hex Industries
-</footer>
-
-<script>
-const sections = document.querySelectorAll('.section');
-
-window.addEventListener('scroll', () => {
-  const triggerBottom = window.innerHeight * 0.85;
-
-  sections.forEach(section => {
-    const boxTop = section.getBoundingClientRect().top;
-
-    if (boxTop < triggerBottom) {
-      section.classList.add('show');
-    }
-  });
-});
-</script>
-
-</body>
-</html>
