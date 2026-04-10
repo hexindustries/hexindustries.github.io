@@ -14,7 +14,64 @@
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
 }
+/* SYSTEMS SECTION */
+.systems {
+  padding: 120px 80px;
+  background: #05070B;
+}
 
+.system {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 60px;
+  gap: 40px;
+}
+
+.system-text {
+  flex: 1;
+}
+
+.system-text h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #E6E9F2;
+  letter-spacing: 1px;
+}
+
+.system-text p {
+  color: #8A93A6;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* FAKE VISUAL BOX (placeholder for images/videos later) */
+.system-box {
+  flex: 1;
+  height: 200px;
+  background: linear-gradient(135deg, #0B1220, #05070B);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ALTERNATING LAYOUT FIX */
+.system:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+  .system {
+    flex-direction: column;
+  }
+
+  .system:nth-child(even) {
+    flex-direction: column;
+  }
+
+  .systems {
+    padding: 80px 20px;
+  }
+}
 body {
   background: #05070B;
   color: #E6E9F2;
@@ -289,6 +346,57 @@ nav .links a:hover {
     padding: 80px 20px;
   }
 }
+</section>
+  <!-- SYSTEMS SHOWCASE -->
+<section class="systems">
+
+  <div class="section-header">
+    <h2>SYSTEMS</h2>
+    <p>Advanced platforms under development within Hex Industries engineering programs</p>
+  </div>
+
+  <div class="system">
+
+    <div class="system-text">
+      <h3>HX-01 Autonomous Flight Platform</h3>
+      <p>
+        A next-generation autonomous aerial system designed for adaptive flight control, 
+        real-time decision processing, and multi-environment operation capability.
+      </p>
+    </div>
+
+    <div class="system-box"></div>
+
+  </div>
+
+  <div class="system">
+
+    <div class="system-box"></div>
+
+    <div class="system-text">
+      <h3>HX-02 Orbital Systems Framework</h3>
+      <p>
+        Modular orbital architecture designed for scalable deployment of reconnaissance, 
+        communication, and autonomous navigation systems in near-space environments.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="system">
+
+    <div class="system-text">
+      <h3>HX-03 AI Navigation Core</h3>
+      <p>
+        Intelligent navigation engine enabling predictive path optimization, 
+        sensor fusion, and autonomous mission recalibration in dynamic conditions.
+      </p>
+    </div>
+
+    <div class="system-box"></div>
+
+  </div>
+
 </section>
 </body>
 </html>
