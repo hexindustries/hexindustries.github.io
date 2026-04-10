@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: #0a0f1a;
+  color: #e6e9ef;
+  line-height: 1.6;
+}
+
+/* HERO SECTION */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: radial-gradient(circle at center, #111a2e 0%, #0a0f1a 60%);
+}
+
+.hero-inner {
+  max-width: 900px;
+  padding: 20px;
+}
+
+.logo {
+  font-size: 52px;
+  letter-spacing: 6px;
+  font-weight: 700;
+}
+
+.tagline {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+/* CTA BUTTONS */
+.cta {
+  margin-top: 30px;
+}
+
+.cta a {
+  text-decoration: none;
+  color: #e6e9ef;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 10px 20px;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.4s ease;
+}
+
+.cta a:hover {
+  background: #e6e9ef;
+  color: #0a0f1a;
+}
+
+/* SECTIONS */
+.section {
+  padding: 100px 10%;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 32px;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+/* GRID SYSTEMS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.card {
+  padding: 30px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03);
+  transition: 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255,255,255,0.3);
+}
+
+/* FOOTER */
+footer {
+  padding: 40px;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.6;
+}
+/* =========================
+   STEP 3: CINEMATIC MOTION
+   (Add at bottom only)
+========================= */
+
+/* Smooth page behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Subtle fade-in animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply animation to hero */
+.hero-inner {
+  animation: fadeUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Sections reveal feel (soft, not aggressive) */
+.section {
+  animation: fadeUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Stagger feel for cards */
+.card {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Delay each card slightly */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Hover becomes more “engineered” */
+.cta a {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
