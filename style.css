@@ -151,3 +151,65 @@ html {
 .card {
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
+/* =========================
+   STEP 4: CINEMATIC HERO
+========================= */
+
+/* Background layer (ready for video/image later) */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(circle at center, #1a2742 0%, #0a0f1a 70%);
+  z-index: 0;
+}
+
+/* Dark overlay for depth */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(10, 15, 26, 0.65);
+  z-index: 1;
+}
+
+/* Ensure hero content is above layers */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Bring text above background */
+.hero-inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* Subtle glow effect on logo (very controlled) */
+.logo {
+  text-shadow: 0 0 20px rgba(120, 160, 255, 0.15);
+}
+
+/* CTA refinement */
+.cta a {
+  backdrop-filter: blur(6px);
+}
+
+/* =========================
+   STEP 5: SCROLL REVEAL
+========================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
