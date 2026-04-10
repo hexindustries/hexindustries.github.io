@@ -268,3 +268,63 @@ p {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* =========================
+   STEP 8: RESPONSIVE DESIGN
+========================= */
+
+/* Tablets */
+@media (max-width: 900px) {
+  .logo {
+    font-size: 38px;
+    letter-spacing: 5px;
+  }
+
+  .tagline {
+    font-size: 16px;
+  }
+
+  .section {
+    padding: 80px 6%;
+  }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  .logo {
+    font-size: 28px;
+    letter-spacing: 4px;
+  }
+
+  .tagline {
+    font-size: 14px;
+  }
+
+  .cta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cta a {
+    margin: 0;
+    text-align: center;
+  }
+
+  .section {
+    padding: 70px 5%;
+  }
+
+  .section h2 {
+    font-size: 24px;
+    letter-spacing: 3px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 22px;
+  }
+}
