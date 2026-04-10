@@ -177,5 +177,118 @@ nav .links a:hover {
 
 </section>
 
+  <!-- CAPABILITIES -->
+<section class="capabilities">
+
+  <div class="section-header">
+    <h2>CAPABILITIES</h2>
+    <p>Core engineering domains defining Hex Industries systems architecture</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Aerospace Systems</h3>
+      <p>Design and development of next-generation flight and orbital platforms engineered for high-performance environments.</p>
+    </div>
+
+    <div class="card">
+      <h3>Autonomous Platforms</h3>
+      <p>AI-driven autonomous systems capable of adaptive decision-making across complex operational scenarios.</p>
+    </div>
+
+    <div class="card">
+      <h3>Defense Technologies</h3>
+      <p>Advanced defense-oriented technologies focused on resilience, precision, and mission-critical reliability.</p>
+    </div>
+
+    <div class="card">
+      <h3>AI Navigation Systems</h3>
+      <p>Intelligent navigation and guidance systems powered by real-time data processing and predictive modeling.</p>
+    </div>
+
+    <div class="card">
+      <h3>Simulation & Testing</h3>
+      <p>High-fidelity simulation environments for system validation, stress testing, and performance optimization.</p>
+    </div>
+
+    <div class="card">
+      <h3>Research Division</h3>
+      <p>Exploratory research into next-generation aerospace materials, propulsion concepts, and system intelligence.</p>
+    </div>
+
+  </div>
+/* CAPABILITIES SECTION */
+.capabilities {
+  padding: 120px 80px;
+  background: #05070B;
+}
+
+.section-header {
+  margin-bottom: 60px;
+}
+
+.section-header h2 {
+  font-size: 28px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.section-header p {
+  margin-top: 10px;
+  color: #8A93A6;
+  font-size: 14px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* CARDS */
+.card {
+  background: #0B1220;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 24px;
+  transition: 0.3s;
+}
+
+.card h3 {
+  font-size: 15px;
+  margin-bottom: 10px;
+  color: #E6E9F2;
+}
+
+.card p {
+  font-size: 13px;
+  color: #8A93A6;
+  line-height: 1.5;
+}
+
+/* HOVER EFFECT */
+.card:hover {
+  border-color: #7AA2FF;
+  transform: translateY(-4px);
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .capabilities {
+    padding: 80px 20px;
+  }
+}
+</section>
 </body>
 </html>
