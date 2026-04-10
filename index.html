@@ -1,154 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
 <title>Hex Industries</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #070b14;
-  color: #e6e6e6;
-  overflow-x: hidden;
+  background: #0a0a0a;
+  color: #e5e5e5;
 }
 
-/* NAV */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 10%;
-  background: rgba(7, 11, 20, 0.6);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
-}
-
-nav .logo {
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-nav a {
-  color: #aab3c5;
-  text-decoration: none;
-  margin-left: 25px;
-  font-size: 14px;
+/* HEADER */
+header {
+  padding: 20px 50px;
+  font-size: 18px;
+  letter-spacing: 1px;
 }
 
 /* HERO */
 .hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 10%;
-  position: relative;
-  background: radial-gradient(circle at 30% 30%, #101a33, #070b14);
-  overflow: hidden;
-}
-
-/* cinematic overlay glow */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 70% 40%, rgba(120,160,255,0.15), transparent 60%);
-  pointer-events: none;
-}
-
-.hero h1 {
-  font-size: 64px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  margin: 0;
+  padding: 120px 50px;
+  font-size: 48px;
+  font-weight: 700;
+  max-width: 900px;
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1s ease forwards;
-}
-
-.hero p {
-  margin-top: 20px;
-  font-size: 18px;
-  color: #aab3c5;
-  max-width: 600px;
-  line-height: 1.6;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1s ease 0.2s forwards;
-}
-
-.tagline {
-  margin-top: 30px;
-  font-size: 12px;
-  letter-spacing: 4px;
-  color: #6f7a90;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1s ease 0.4s forwards;
+  transform: translateY(30px);
+  animation: fadeUp 1.2s ease forwards;
 }
 
 /* SECTIONS */
-section {
-  padding: 110px 10%;
+.section {
+  padding: 80px 50px;
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(40px);
   transition: all 0.8s ease;
 }
 
-section.show {
+.section.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-.section-title {
-  font-size: 28px;
-  margin-bottom: 40px;
-  letter-spacing: 1px;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-}
-
-.card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 25px;
-  transition: 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(255,255,255,0.18);
-  background: rgba(255,255,255,0.05);
-}
-
-/* PROJECTS */
-.project {
-  border-left: 2px solid #2d3b55;
-  padding-left: 20px;
+.title {
+  font-size: 26px;
   margin-bottom: 20px;
 }
 
-/* FOOTER */
 footer {
-  padding: 50px 10%;
-  text-align: center;
-  color: #6f7a90;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  font-size: 13px;
+  padding: 40px 50px;
+  font-size: 14px;
+  color: #777;
 }
 
-/* ANIMATIONS */
+/* ANIMATION KEYFRAME */
 @keyframes fadeUp {
   to {
     opacity: 1;
@@ -160,105 +68,52 @@ footer {
 
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="logo">HEX INDUSTRIES</div>
-  <div>
-    <a href="#about">About</a>
-    <a href="#systems">Systems</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+<header>HEX INDUSTRIES</header>
 
-<!-- HERO -->
 <div class="hero">
-  <h1>Hex Industries</h1>
-  <p>
-    Building next-generation aerospace and autonomous systems designed for intelligence, precision, and long-term strategic capability.
-  </p>
-  <div class="tagline">INNOVATING TOMORROW, TODAY.</div>
+  Engineering the future of aerospace and autonomous systems.
 </div>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-title">About</div>
-  <p style="max-width:700px;color:#aab3c5;line-height:1.7;">
-    Hex Industries is an emerging aerospace and defense technology company focused on advanced autonomous systems, intelligent platforms, and future-ready engineering.
-  </p>
-</section>
+<div class="section">
+  <div class="title">What We Do</div>
+  <p>We design advanced aerospace platforms, autonomous systems, and defense technologies for next-generation missions.</p>
+</div>
 
-<!-- SYSTEMS -->
-<section id="systems">
-  <div class="section-title">Systems</div>
+<div class="section">
+  <div class="title">Systems</div>
+  <p>Unmanned aerial systems, AI-driven control systems, and advanced propulsion technologies.</p>
+</div>
 
-  <div class="grid">
-    <div class="card">
-      <h3>Autonomous Systems</h3>
-      <p style="color:#aab3c5;">AI-driven navigation and decision systems.</p>
-    </div>
+<div class="section">
+  <div class="title">Projects</div>
+  <p>Concept development of next-generation aerial systems and autonomous defense platforms.</p>
+</div>
 
-    <div class="card">
-      <h3>Aerospace Engineering</h3>
-      <p style="color:#aab3c5;">High-performance flight and structural concepts.</p>
-    </div>
+<div class="section">
+  <div class="title">About</div>
+  <p>Hex Industries is an emerging aerospace and defense company focused on innovation, precision, and mission readiness.</p>
+</div>
 
-    <div class="card">
-      <h3>Defense Technologies</h3>
-      <p style="color:#aab3c5;">Secure mission-critical architectures.</p>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-title">Projects</div>
-
-  <div class="project">
-    <h3>HX-01 Platform</h3>
-    <p style="color:#aab3c5;">Autonomous aerial systems prototype architecture.</p>
-  </div>
-
-  <div class="project">
-    <h3>Neural Control Stack</h3>
-    <p style="color:#aab3c5;">Adaptive AI-based system control layer.</p>
-  </div>
-
-  <div class="project">
-    <h3>Orbital Framework</h3>
-    <p style="color:#aab3c5;">Modular orbital systems design concept.</p>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-title">Contact</div>
-  <p style="color:#aab3c5;">
-    Hex Industries<br/>
-    Strategic Systems Division<br/><br/>
-    contact@hexindustries.com
-  </p>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  © 2026 Hex Industries — Innovating Tomorrow, Today.
+  © 2026 Hex Industries
 </footer>
 
-<!-- SCROLL ANIMATION SCRIPT -->
 <script>
-const sections = document.querySelectorAll("section");
+const sections = document.querySelectorAll('.section');
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting) {
-      entry.target.classList.add("show");
+window.addEventListener('scroll', () => {
+  const triggerBottom = window.innerHeight * 0.85;
+
+  sections.forEach(section => {
+    const boxTop = section.getBoundingClientRect().top;
+
+    if (boxTop < triggerBottom) {
+      section.classList.add('show');
     }
   });
-}, { threshold: 0.15 });
-
-sections.forEach(sec => observer.observe(sec));
+});
 </script>
 
 </body>
 </html>
+
