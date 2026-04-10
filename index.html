@@ -2,65 +2,145 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hex Industries</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: 'Inter', sans-serif;
-  background: #0a0a0a;
-  color: #e5e5e5;
 }
 
-/* HEADER */
-header {
-  padding: 20px 50px;
-  font-size: 18px;
-  letter-spacing: 1px;
+body {
+  background: #05070B;
+  color: #E6E9F2;
+  overflow-x: hidden;
+}
+
+/* NAVIGATION */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 22px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(5,7,11,0.55);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+nav .logo {
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+nav .links a {
+  color: #AAB2C0;
+  margin: 0 14px;
+  text-decoration: none;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+nav .links a:hover {
+  color: #7AA2FF;
 }
 
 /* HERO */
 .hero {
-  padding: 120px 50px;
-  font-size: 48px;
-  font-weight: 700;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* VIDEO BACKGROUND */
+.hero video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  filter: brightness(0.35) contrast(1.1);
+}
+
+/* DARK OVERLAY */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(5,7,11,0.3),
+    rgba(5,7,11,0.85)
+  );
+  z-index: -1;
+}
+
+/* HERO CONTENT */
+.hero-content {
   max-width: 900px;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 1.2s ease forwards;
 }
 
-/* SECTIONS */
-.section {
-  padding: 80px 50px;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
+.hero h1 {
+  font-size: 52px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  line-height: 1.2;
 }
 
-.section.show {
-  opacity: 1;
-  transform: translateY(0);
+.hero p {
+  margin-top: 18px;
+  color: #AAB2C0;
+  font-size: 15px;
+  letter-spacing: 1px;
 }
 
-.title {
-  font-size: 26px;
-  margin-bottom: 20px;
+.tagline {
+  margin-top: 8px;
+  color: #7AA2FF;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 
-footer {
-  padding: 40px 50px;
-  font-size: 14px;
-  color: #777;
+/* BUTTON */
+.hero button {
+  margin-top: 32px;
+  padding: 12px 26px;
+  background: transparent;
+  border: 1px solid #7AA2FF;
+  color: #7AA2FF;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-/* ANIMATION KEYFRAME */
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+.hero button:hover {
+  background: #7AA2FF;
+  color: #05070B;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+  nav {
+    padding: 18px 20px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
   }
 }
 </style>
@@ -68,51 +148,34 @@ footer {
 
 <body>
 
-<header>HEX INDUSTRIES</header>
+<!-- NAV -->
+<nav>
+  <div class="logo">HEX INDUSTRIES</div>
 
-<div class="hero">
-  Engineering the future of aerospace and autonomous systems.
-</div>
+  <div class="links">
+    <a href="#">Mission</a>
+    <a href="#">Capabilities</a>
+    <a href="#">Systems</a>
+    <a href="#">Research</a>
+  </div>
+</nav>
 
-<div class="section">
-  <div class="title">What We Do</div>
-  <p>We design advanced aerospace platforms, autonomous systems, and defense technologies for next-generation missions.</p>
-</div>
+<!-- HERO -->
+<section class="hero">
 
-<div class="section">
-  <div class="title">Systems</div>
-  <p>Unmanned aerial systems, AI-driven control systems, and advanced propulsion technologies.</p>
-</div>
+  <video autoplay muted loop playsinline>
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
 
-<div class="section">
-  <div class="title">Projects</div>
-  <p>Concept development of next-generation aerial systems and autonomous defense platforms.</p>
-</div>
+  <div class="hero-content">
+    <h1>ENGINEERING NEXT-GENERATION SYSTEMS</h1>
+    <p>Advanced aerospace and autonomous technologies for future operational environments.</p>
+    <div class="tagline">Innovating Tomorrow, Today.</div>
 
-<div class="section">
-  <div class="title">About</div>
-  <p>Hex Industries is an emerging aerospace and defense company focused on innovation, precision, and mission readiness.</p>
-</div>
+    <button>Explore Capabilities</button>
+  </div>
 
-<footer>
-  © 2026 Hex Industries
-</footer>
-
-<script>
-const sections = document.querySelectorAll('.section');
-
-window.addEventListener('scroll', () => {
-  const triggerBottom = window.innerHeight * 0.85;
-
-  sections.forEach(section => {
-    const boxTop = section.getBoundingClientRect().top;
-
-    if (boxTop < triggerBottom) {
-      section.classList.add('show');
-    }
-  });
-});
-</script>
+</section>
 
 </body>
 </html>
