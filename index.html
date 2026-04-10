@@ -48,7 +48,18 @@ nav a {
   flex-direction: column;
   justify-content: center;
   padding: 0 10%;
+  position: relative;
   background: radial-gradient(circle at 30% 30%, #101a33, #070b14);
+  overflow: hidden;
+}
+
+/* cinematic overlay glow */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 40%, rgba(120,160,255,0.15), transparent 60%);
+  pointer-events: none;
 }
 
 .hero h1 {
@@ -56,6 +67,9 @@ nav a {
   font-weight: 600;
   letter-spacing: 2px;
   margin: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
 }
 
 .hero p {
@@ -64,6 +78,9 @@ nav a {
   color: #aab3c5;
   max-width: 600px;
   line-height: 1.6;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease 0.2s forwards;
 }
 
 .tagline {
@@ -71,11 +88,22 @@ nav a {
   font-size: 12px;
   letter-spacing: 4px;
   color: #6f7a90;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease 0.4s forwards;
 }
 
 /* SECTIONS */
 section {
-  padding: 100px 10%;
+  padding: 110px 10%;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section-title {
@@ -99,8 +127,9 @@ section {
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(255,255,255,0.2);
+  transform: translateY(-6px);
+  border-color: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.05);
 }
 
 /* PROJECTS */
@@ -117,6 +146,14 @@ footer {
   color: #6f7a90;
   border-top: 1px solid rgba(255,255,255,0.08);
   font-size: 13px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
 </head>
@@ -138,8 +175,7 @@ footer {
 <div class="hero">
   <h1>Hex Industries</h1>
   <p>
-    Building next-generation aerospace and autonomous systems designed for
-    intelligence, precision, and long-term strategic capability.
+    Building next-generation aerospace and autonomous systems designed for intelligence, precision, and long-term strategic capability.
   </p>
   <div class="tagline">INNOVATING TOMORROW, TODAY.</div>
 </div>
@@ -148,9 +184,7 @@ footer {
 <section id="about">
   <div class="section-title">About</div>
   <p style="max-width:700px;color:#aab3c5;line-height:1.7;">
-    Hex Industries is an emerging aerospace and defense technology company focused on
-    advanced autonomous systems, intelligent platforms, and future-ready engineering.
-    We design with a systems-first mindset, prioritizing reliability, scalability, and mission performance.
+    Hex Industries is an emerging aerospace and defense technology company focused on advanced autonomous systems, intelligent platforms, and future-ready engineering.
   </p>
 </section>
 
@@ -161,17 +195,17 @@ footer {
   <div class="grid">
     <div class="card">
       <h3>Autonomous Systems</h3>
-      <p style="color:#aab3c5;">AI-driven platforms for navigation, sensing, and decision-making.</p>
+      <p style="color:#aab3c5;">AI-driven navigation and decision systems.</p>
     </div>
 
     <div class="card">
       <h3>Aerospace Engineering</h3>
-      <p style="color:#aab3c5;">High-performance structural and propulsion design concepts.</p>
+      <p style="color:#aab3c5;">High-performance flight and structural concepts.</p>
     </div>
 
     <div class="card">
       <h3>Defense Technologies</h3>
-      <p style="color:#aab3c5;">Secure, resilient systems for critical mission environments.</p>
+      <p style="color:#aab3c5;">Secure mission-critical architectures.</p>
     </div>
   </div>
 </section>
@@ -181,18 +215,18 @@ footer {
   <div class="section-title">Projects</div>
 
   <div class="project">
-    <h3>HX-01 Concept Platform</h3>
-    <p style="color:#aab3c5;">Experimental autonomous aerial systems architecture.</p>
+    <h3>HX-01 Platform</h3>
+    <p style="color:#aab3c5;">Autonomous aerial systems prototype architecture.</p>
   </div>
 
   <div class="project">
     <h3>Neural Control Stack</h3>
-    <p style="color:#aab3c5;">AI-based control layer for adaptive system behavior.</p>
+    <p style="color:#aab3c5;">Adaptive AI-based system control layer.</p>
   </div>
 
   <div class="project">
-    <h3>Orbital Systems Framework</h3>
-    <p style="color:#aab3c5;">Conceptual modular framework for orbital operations.</p>
+    <h3>Orbital Framework</h3>
+    <p style="color:#aab3c5;">Modular orbital systems design concept.</p>
   </div>
 </section>
 
@@ -210,6 +244,21 @@ footer {
 <footer>
   © 2026 Hex Industries — Innovating Tomorrow, Today.
 </footer>
+
+<!-- SCROLL ANIMATION SCRIPT -->
+<script>
+const sections = document.querySelectorAll("section");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.15 });
+
+sections.forEach(sec => observer.observe(sec));
+</script>
 
 </body>
 </html>
