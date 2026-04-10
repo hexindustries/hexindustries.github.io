@@ -209,6 +209,61 @@ html {
   transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* =========================
+   STEP 6: FINAL POLISH
+========================= */
+
+/* Improve rendering smoothness */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Better spacing rhythm */
+.section {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Slightly more premium headings */
+.section h2 {
+  letter-spacing: 4px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+/* Cards feel more “engineered” */
+.card {
+  border-radius: 6px;
+  backdrop-filter: blur(8px);
+}
+
+/* Hover refinement (no aggressive movement) */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* CTA refinement */
+.cta a {
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+
+.cta a:hover {
+  transform: translateY(-2px);
+}
+
+/* Logo refinement */
+.logo {
+  letter-spacing: 8px;
+}
+
+/* Reduce visual noise slightly */
+p {
+  opacity: 0.85;
+}
+
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
