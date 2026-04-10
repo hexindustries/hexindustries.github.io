@@ -1,88 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hex Industries</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0a0f1c;
-      color: #e6f1ff;
-    }
-    header {
-      padding: 20px;
-      text-align: center;
-      font-size: 28px;
-      font-weight: bold;
-      background: #05080f;
-      letter-spacing: 2px;
-    }
-    section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 18px;
-      max-width: 700px;
-      margin: auto;
-      line-height: 1.6;
-    }
-    .btn {
-      margin-top: 20px;
-      padding: 12px 24px;
-      border: none;
-      background: #00bfff;
-      color: black;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 6px;
-    }
-    footer {
-      padding: 20px;
-      text-align: center;
-      font-size: 14px;
-      background: #05080f;
-      margin-top: 40px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hex Industries</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0a;
+    color: #ffffff;
+}
+
+header {
+    padding: 20px 60px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+}
+
+header h1 {
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+section {
+    padding: 120px 60px;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero h2 {
+    font-size: 56px;
+    margin: 0;
+}
+
+.hero p {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #aaa;
+    max-width: 600px;
+}
+
+.btn {
+    margin-top: 30px;
+    padding: 12px 24px;
+    border: 1px solid #fff;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.footer {
+    padding: 40px 60px;
+    border-top: 1px solid #222;
+    font-size: 14px;
+    color: #777;
+}
+</style>
 </head>
+
 <body>
-  <header>HEX INDUSTRIES</header>
 
-  <section>
-    <h1>Engineering the Future of Aerospace</h1>
-    <p>
-      Hex Industries is focused on building next-generation autonomous aerospace systems,
-      combining advanced intelligence, simulation, and innovative engineering.
-    </p>
-    <button class="btn">Explore Projects</button>
-  </section>
+<header>
+<h1>HEX INDUSTRIES</h1>
+</header>
 
-  <section>
-    <h2>Our Vision</h2>
-    <p>
-      To develop cutting-edge aerospace technologies that redefine performance, precision,
-      and autonomy for the future of flight.
-    </p>
-  </section>
+<section class="hero">
+<h2>Innovating Tomorrow, Today.</h2>
+<p>Delivering advanced defense and aerospace systems through innovation, precision, and integrated technologies.</p>
+<a class="btn" href="#">Explore Systems</a>
+</section>
 
-  <section>
-    <h2>Current Focus</h2>
-    <p>
-      • Autonomous Flight Systems<br>
-      • Aerospace Simulation Platforms<br>
-      • AI-driven Navigation & Control
-    </p>
-  </section>
+<section>
+<h2>What We Do</h2>
+<div class="grid">
+<div class="card">
+<h3>Autonomous Defense Systems</h3>
+<p>Development of intelligent and adaptive system capabilities.</p>
+</div>
+<div class="card">
+<h3>Aerospace Technologies</h3>
+<p>Advanced platforms and next-generation aerospace solutions.</p>
+</div>
+<div class="card">
+<h3>AI Navigation</h3>
+<p>Precision-driven control and decision-making systems.</p>
+</div>
+<div class="card">
+<h3>Simulation</h3>
+<p>High-fidelity modeling and testing environments.</p>
+</div>
+</div>
+</section>
 
-  <footer>
-    © 2026 Hex Industries | All Rights Reserved
-  </footer>
+<section>
+<h2>Systems</h2>
+<div class="grid">
+<div class="card">
+<h3>Air Systems</h3>
+<p>Advanced aerial platforms and autonomous flight technologies.</p>
+</div>
+<div class="card">
+<h3>Autonomous Systems</h3>
+<p>Intelligent systems enabling real-time decision making.</p>
+</div>
+<div class="card">
+<h3>Defense Systems</h3>
+<p>Detection, tracking, and operational technologies.</p>
+</div>
+<div class="card">
+<h3>Simulation Systems</h3>
+<p>Modeling and validation environments.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Projects</h2>
+<p>Autonomous Aerial System (Concept Development)<br>
+Flight Simulation Engine (In Development)</p>
+</section>
+
+<section>
+<h2>About</h2>
+<p>Hex Industries is an emerging defense-focused aerospace initiative dedicated to advancing autonomous systems, simulation technologies, and integrated solutions.</p>
+</section>
+
+<div class="footer">
+© Hex Industries
+</div>
+
 </body>
 </html>
