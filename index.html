@@ -1,204 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Hex Industries</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-}
-/* SYSTEMS SECTION */
-.systems {
-  padding: 120px 80px;
-  background: #05070B;
-}
-
-.system {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 60px;
-  gap: 40px;
-}
-
-.system-text {
-  flex: 1;
-}
-
-.system-text h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #E6E9F2;
-  letter-spacing: 1px;
-}
-
-.system-text p {
-  color: #8A93A6;
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-/* FAKE VISUAL BOX (placeholder for images/videos later) */
-.system-box {
-  flex: 1;
-  height: 200px;
-  background: linear-gradient(135deg, #0B1220, #05070B);
-  border: 1px solid rgba(255,255,255,0.06);
-}
-
-/* ALTERNATING LAYOUT FIX */
-.system:nth-child(even) {
-  flex-direction: row-reverse;
-}
-
-/* RESPONSIVE */
-@media(max-width: 900px) {
-  .system {
-    flex-direction: column;
-  }
-
-  .system:nth-child(even) {
-    flex-direction: column;
-  }
-
-  .systems {
-    padding: 80px 20px;
-  }
-}
 body {
-  background: #05070B;
-  color: #E6E9F2;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #070b14;
+  color: #e6e6e6;
   overflow-x: hidden;
 }
 
-/* NAVIGATION */
+/* NAV */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 22px 60px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background: rgba(5,7,11,0.55);
-  backdrop-filter: blur(12px);
+  padding: 20px 10%;
+  background: rgba(7, 11, 20, 0.6);
+  backdrop-filter: blur(10px);
   z-index: 1000;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 nav .logo {
   font-weight: 700;
   letter-spacing: 2px;
-  font-size: 14px;
 }
 
-nav .links a {
-  color: #AAB2C0;
-  margin: 0 14px;
+nav a {
+  color: #aab3c5;
   text-decoration: none;
-  font-size: 13px;
-  transition: 0.3s;
-}
-
-nav .links a:hover {
-  color: #7AA2FF;
+  margin-left: 25px;
+  font-size: 14px;
 }
 
 /* HERO */
 .hero {
   height: 100vh;
-  position: relative;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  text-align: center;
-  padding: 0 20px;
-}
-
-/* VIDEO BACKGROUND */
-.hero video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
-  filter: brightness(0.35) contrast(1.1);
-}
-
-/* DARK OVERLAY */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(5,7,11,0.3),
-    rgba(5,7,11,0.85)
-  );
-  z-index: -1;
-}
-
-/* HERO CONTENT */
-.hero-content {
-  max-width: 900px;
+  padding: 0 10%;
+  background: radial-gradient(circle at 30% 30%, #101a33, #070b14);
 }
 
 .hero h1 {
-  font-size: 52px;
+  font-size: 64px;
   font-weight: 600;
   letter-spacing: 2px;
-  line-height: 1.2;
+  margin: 0;
 }
 
 .hero p {
-  margin-top: 18px;
-  color: #AAB2C0;
-  font-size: 15px;
-  letter-spacing: 1px;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #aab3c5;
+  max-width: 600px;
+  line-height: 1.6;
 }
 
 .tagline {
-  margin-top: 8px;
-  color: #7AA2FF;
-  font-weight: 500;
+  margin-top: 30px;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #6f7a90;
+}
+
+/* SECTIONS */
+section {
+  padding: 100px 10%;
+}
+
+.section-title {
+  font-size: 28px;
+  margin-bottom: 40px;
   letter-spacing: 1px;
 }
 
-/* BUTTON */
-.hero button {
-  margin-top: 32px;
-  padding: 12px 26px;
-  background: transparent;
-  border: 1px solid #7AA2FF;
-  color: #7AA2FF;
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 25px;
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255,255,255,0.2);
+}
+
+/* PROJECTS */
+.project {
+  border-left: 2px solid #2d3b55;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+/* FOOTER */
+footer {
+  padding: 50px 10%;
+  text-align: center;
+  color: #6f7a90;
+  border-top: 1px solid rgba(255,255,255,0.08);
   font-size: 13px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.hero button:hover {
-  background: #7AA2FF;
-  color: #05070B;
-}
-
-/* RESPONSIVE */
-@media(max-width: 768px) {
-  nav {
-    padding: 18px 20px;
-  }
-
-  .hero h1 {
-    font-size: 34px;
-  }
 }
 </style>
 </head>
@@ -208,195 +126,90 @@ nav .links a:hover {
 <!-- NAV -->
 <nav>
   <div class="logo">HEX INDUSTRIES</div>
-
-  <div class="links">
-    <a href="#">Mission</a>
-    <a href="#">Capabilities</a>
-    <a href="#">Systems</a>
-    <a href="#">Research</a>
+  <div>
+    <a href="#about">About</a>
+    <a href="#systems">Systems</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<div class="hero">
+  <h1>Hex Industries</h1>
+  <p>
+    Building next-generation aerospace and autonomous systems designed for
+    intelligence, precision, and long-term strategic capability.
+  </p>
+  <div class="tagline">INNOVATING TOMORROW, TODAY.</div>
+</div>
 
-  <video autoplay muted loop playsinline>
-    <source src="assets/hero.mp4" type="video/mp4">
-  </video>
-
-  <div class="hero-content">
-    <h1>ENGINEERING NEXT-GENERATION SYSTEMS</h1>
-    <p>Advanced aerospace and autonomous technologies for future operational environments.</p>
-    <div class="tagline">Innovating Tomorrow, Today.</div>
-
-    <button>Explore Capabilities</button>
-  </div>
-
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-title">About</div>
+  <p style="max-width:700px;color:#aab3c5;line-height:1.7;">
+    Hex Industries is an emerging aerospace and defense technology company focused on
+    advanced autonomous systems, intelligent platforms, and future-ready engineering.
+    We design with a systems-first mindset, prioritizing reliability, scalability, and mission performance.
+  </p>
 </section>
 
-  <!-- CAPABILITIES -->
-<section class="capabilities">
-
-  <div class="section-header">
-    <h2>CAPABILITIES</h2>
-    <p>Core engineering domains defining Hex Industries systems architecture</p>
-  </div>
+<!-- SYSTEMS -->
+<section id="systems">
+  <div class="section-title">Systems</div>
 
   <div class="grid">
-
     <div class="card">
-      <h3>Aerospace Systems</h3>
-      <p>Design and development of next-generation flight and orbital platforms engineered for high-performance environments.</p>
+      <h3>Autonomous Systems</h3>
+      <p style="color:#aab3c5;">AI-driven platforms for navigation, sensing, and decision-making.</p>
     </div>
 
     <div class="card">
-      <h3>Autonomous Platforms</h3>
-      <p>AI-driven autonomous systems capable of adaptive decision-making across complex operational scenarios.</p>
+      <h3>Aerospace Engineering</h3>
+      <p style="color:#aab3c5;">High-performance structural and propulsion design concepts.</p>
     </div>
 
     <div class="card">
       <h3>Defense Technologies</h3>
-      <p>Advanced defense-oriented technologies focused on resilience, precision, and mission-critical reliability.</p>
+      <p style="color:#aab3c5;">Secure, resilient systems for critical mission environments.</p>
     </div>
-
-    <div class="card">
-      <h3>AI Navigation Systems</h3>
-      <p>Intelligent navigation and guidance systems powered by real-time data processing and predictive modeling.</p>
-    </div>
-
-    <div class="card">
-      <h3>Simulation & Testing</h3>
-      <p>High-fidelity simulation environments for system validation, stress testing, and performance optimization.</p>
-    </div>
-
-    <div class="card">
-      <h3>Research Division</h3>
-      <p>Exploratory research into next-generation aerospace materials, propulsion concepts, and system intelligence.</p>
-    </div>
-
   </div>
-/* CAPABILITIES SECTION */
-.capabilities {
-  padding: 120px 80px;
-  background: #05070B;
-}
-
-.section-header {
-  margin-bottom: 60px;
-}
-
-.section-header h2 {
-  font-size: 28px;
-  letter-spacing: 2px;
-  font-weight: 600;
-}
-
-.section-header p {
-  margin-top: 10px;
-  color: #8A93A6;
-  font-size: 14px;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-}
-
-/* CARDS */
-.card {
-  background: #0B1220;
-  border: 1px solid rgba(255,255,255,0.06);
-  padding: 24px;
-  transition: 0.3s;
-}
-
-.card h3 {
-  font-size: 15px;
-  margin-bottom: 10px;
-  color: #E6E9F2;
-}
-
-.card p {
-  font-size: 13px;
-  color: #8A93A6;
-  line-height: 1.5;
-}
-
-/* HOVER EFFECT */
-.card:hover {
-  border-color: #7AA2FF;
-  transform: translateY(-4px);
-}
-
-/* RESPONSIVE */
-@media(max-width: 900px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media(max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .capabilities {
-    padding: 80px 20px;
-  }
-}
 </section>
-  <!-- SYSTEMS SHOWCASE -->
-<section class="systems">
 
-  <div class="section-header">
-    <h2>SYSTEMS</h2>
-    <p>Advanced platforms under development within Hex Industries engineering programs</p>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-title">Projects</div>
+
+  <div class="project">
+    <h3>HX-01 Concept Platform</h3>
+    <p style="color:#aab3c5;">Experimental autonomous aerial systems architecture.</p>
   </div>
 
-  <div class="system">
-
-    <div class="system-text">
-      <h3>HX-01 Autonomous Flight Platform</h3>
-      <p>
-        A next-generation autonomous aerial system designed for adaptive flight control, 
-        real-time decision processing, and multi-environment operation capability.
-      </p>
-    </div>
-
-    <div class="system-box"></div>
-
+  <div class="project">
+    <h3>Neural Control Stack</h3>
+    <p style="color:#aab3c5;">AI-based control layer for adaptive system behavior.</p>
   </div>
 
-  <div class="system">
-
-    <div class="system-box"></div>
-
-    <div class="system-text">
-      <h3>HX-02 Orbital Systems Framework</h3>
-      <p>
-        Modular orbital architecture designed for scalable deployment of reconnaissance, 
-        communication, and autonomous navigation systems in near-space environments.
-      </p>
-    </div>
-
+  <div class="project">
+    <h3>Orbital Systems Framework</h3>
+    <p style="color:#aab3c5;">Conceptual modular framework for orbital operations.</p>
   </div>
-
-  <div class="system">
-
-    <div class="system-text">
-      <h3>HX-03 AI Navigation Core</h3>
-      <p>
-        Intelligent navigation engine enabling predictive path optimization, 
-        sensor fusion, and autonomous mission recalibration in dynamic conditions.
-      </p>
-    </div>
-
-    <div class="system-box"></div>
-
-  </div>
-
 </section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-title">Contact</div>
+  <p style="color:#aab3c5;">
+    Hex Industries<br/>
+    Strategic Systems Division<br/><br/>
+    contact@hexindustries.com
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Hex Industries — Innovating Tomorrow, Today.
+</footer>
+
 </body>
 </html>
