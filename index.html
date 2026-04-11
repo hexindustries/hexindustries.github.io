@@ -11,10 +11,11 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background: #000;
-  color: #ffffff; /* FULL BRIGHT TEXT */
+  color: #e6e6e6;
+  overflow-x: hidden;
 }
 
-/* VIDEO BACKGROUND */
+/* VIDEO */
 video {
   position: fixed;
   top: 0;
@@ -23,7 +24,7 @@ video {
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  opacity: 0.2;
+  opacity: 0.14;
 }
 
 /* OVERLAY */
@@ -32,13 +33,12 @@ body::before {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.82);
 }
 
 /* HEADER */
 header {
   padding: 25px 50px;
-  position: relative;
 }
 
 .logo {
@@ -49,7 +49,7 @@ header {
 
 .tagline {
   font-size: 12px;
-  color: #fff;
+  color: #bfbfbf;
 }
 
 /* NAV */
@@ -58,11 +58,12 @@ nav {
 }
 
 nav a {
-  color: #fff;
+  color: #cfcfcf;
   margin-right: 25px;
   text-decoration: none;
   font-size: 14px;
   position: relative;
+  transition: 0.3s;
 }
 
 nav a:hover {
@@ -73,10 +74,10 @@ nav a::after {
   content: "";
   position: absolute;
   bottom: -4px;
-  left: 0;
   width: 0%;
   height: 1px;
-  background: white;
+  background: #fff;
+  left: 0;
   transition: 0.3s;
 }
 
@@ -94,42 +95,78 @@ nav a.active::after {
 
 /* HERO */
 .hero {
-  padding: 150px 50px 80px;
-  font-size: 52px;
+  padding: 200px 50px 140px;
   max-width: 900px;
+}
+
+.hero-main {
+  font-size: 64px;
   font-weight: 700;
-  color: #ffffff; /* SAME AS HOVER */
+  line-height: 1.05;
+  color: #ffffff;
+  margin-bottom: 25px;
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+}
+
+.hero-sub {
+  font-size: 16px;
+  max-width: 600px;
+  color: #cfcfcf;
+  line-height: 1.6;
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.3s;
 }
 
 /* SECTION */
 .section {
-  padding: 80px 50px;
+  padding: 110px 50px;
   max-width: 1100px;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .title {
-  font-size: 22px;
-  margin-bottom: 20px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
   color: #ffffff;
+}
+
+.text {
+  max-width: 700px;
+  line-height: 1.6;
+  color: #cfcfcf;
 }
 
 /* CARDS */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
 }
 
 .card {
-  padding: 25px;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.02);
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.025);
+  transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
-  transition: 0.4s;
 }
 
-/* EDGE LIGHT */
 .card::before {
   content: "";
   position: absolute;
@@ -138,7 +175,7 @@ nav a.active::after {
   width: 100%;
   height: 1px;
   background: rgba(255,255,255,0.5);
-  transition: 0.5s;
+  transition: 0.6s;
 }
 
 .card:hover::before {
@@ -146,31 +183,39 @@ nav a.active::after {
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(255,255,255,0.3);
+  transform: translateY(-10px);
+  border-color: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.06);
 }
 
 .card h3 {
   margin-bottom: 10px;
-  color: #ffffff;
+  color: #fff;
 }
 
 .card p {
-  color: #ffffff; /* MATCH HOVER TEXT */
+  color: #cfcfcf;
   font-size: 14px;
 }
 
 /* FOOTER */
 footer {
-  padding: 40px 50px;
-  color: #fff;
+  padding: 50px;
+  color: #777;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- VIDEO -->
 <video autoplay muted loop playsinline>
   <source src="1.mp4" type="video/mp4">
 </video>
@@ -189,85 +234,52 @@ footer {
 </nav>
 
 <div class="hero">
-  Engineering Autonomous Systems for the Next Era of Aerospace.
+  <div class="hero-main">
+    Autonomous Systems for the Future of Aerospace.
+  </div>
+  <div class="hero-sub">
+    Engineering intelligent platforms designed for next-generation missions, precision operations, and evolving defense environments.
+  </div>
 </div>
 
-<!-- CAPABILITIES -->
+<div class="section">
+  <div class="text">
+    Hex Industries develops advanced aerospace and autonomous systems engineered for next-generation missions.
+  </div>
+</div>
+
 <div class="section">
   <div class="title">Capabilities</div>
   <div class="cards">
     <div class="card">
       <h3>Autonomous Platforms</h3>
-      <p>AI-driven systems for adaptive missions.</p>
+      <p>Adaptive systems capable of real-time decision making.</p>
     </div>
     <div class="card">
-      <h3>Aerospace Systems</h3>
-      <p>Advanced aircraft and propulsion design.</p>
+      <h3>Aerospace Engineering</h3>
+      <p>Next-generation aircraft and propulsion design.</p>
     </div>
     <div class="card">
-      <h3>Defense Integration</h3>
-      <p>Mission-ready high-performance systems.</p>
+      <h3>Defense Systems</h3>
+      <p>High-performance solutions built for mission readiness.</p>
     </div>
   </div>
 </div>
 
-<!-- PROGRAMS -->
 <div class="section">
   <div class="title">Programs</div>
   <div class="cards">
     <div class="card">
       <h3>Next-Gen UAV</h3>
-      <p>Long-endurance autonomous aircraft.</p>
+      <p>Autonomous aerial systems for strategic operations.</p>
     </div>
     <div class="card">
-      <h3>AI Command Systems</h3>
+      <h3>AI Command</h3>
       <p>Real-time mission intelligence platforms.</p>
     </div>
     <div class="card">
-      <h3>Propulsion Research</h3>
+      <h3>Advanced Propulsion</h3>
       <p>Future-focused propulsion technologies.</p>
-    </div>
-  </div>
-</div>
-
-<!-- OPERATIONAL -->
-<div class="section">
-  <div class="title">Operational Focus</div>
-  <div class="cards">
-    <div class="card">
-      <h3>Autonomous Decision Making</h3>
-      <p>Real-time adaptive mission execution.</p>
-    </div>
-    <div class="card">
-      <h3>Mission Scalability</h3>
-      <p>Systems deployable across environments.</p>
-    </div>
-    <div class="card">
-      <h3>Precision Engineering</h3>
-      <p>Optimized for performance and reliability.</p>
-    </div>
-  </div>
-</div>
-
-<!-- TECHNOLOGY -->
-<div class="section">
-  <div class="title">Technology Focus</div>
-  <div class="cards">
-    <div class="card">
-      <h3>Artificial Intelligence</h3>
-      <p>Autonomous decision systems.</p>
-    </div>
-    <div class="card">
-      <h3>Flight Systems</h3>
-      <p>Advanced aerodynamics and control.</p>
-    </div>
-    <div class="card">
-      <h3>Simulation</h3>
-      <p>High-fidelity modeling environments.</p>
-    </div>
-    <div class="card">
-      <h3>Systems Engineering</h3>
-      <p>Integrated mission architectures.</p>
     </div>
   </div>
 </div>
@@ -275,6 +287,20 @@ footer {
 <footer>
   © 2026 Hex Industries
 </footer>
+
+<script>
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll', () => {
+  const trigger = window.innerHeight * 0.85;
+
+  sections.forEach(sec => {
+    if (sec.getBoundingClientRect().top < trigger) {
+      sec.classList.add('show');
+    }
+  });
+});
+</script>
 
 </body>
 </html>
