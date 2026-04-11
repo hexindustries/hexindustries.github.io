@@ -8,194 +8,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ================= RESET ================= */
+/* ================= MASTER STYLE ================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: #05070d;
-  color: white;
-  overflow-x: hidden;
-}
-
-/* ================= VIDEO BACKGROUND ================= */
-.video-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
-  filter: brightness(0.3) contrast(1.15);
-}
-
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at top, rgba(0,140,255,0.06), transparent 60%),
-              linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.95));
-  z-index: -1;
-}
-
-/* ================= NAVBAR ================= */
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 18px 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  z-index: 999;
-}
-
-.logo {
-  font-size: 13px;
-  letter-spacing: 2px;
-  font-weight: 600;
-}
-
-.nav-links {
-  display: flex;
-  gap: 25px;
-}
-
-.nav-links a {
-  font-size: 12px;
-  text-decoration: none;
-  color: rgba(255,255,255,0.7);
-  letter-spacing: 1px;
-  transition: 0.3s;
-}
-
-.nav-links a:hover {
-  color: white;
-}
-
-/* ACTIVE PAGE (SAFE VERSION) */
-.nav-links a.active {
-  color: white;
-}
-
-.nav-links a.active::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: rgba(0,170,255,0.8);
-  margin-top: 4px;
-}
-
-/* ================= HERO / HEADER ================= */
-.hero, .header {
-  padding: 140px 80px 40px;
-}
-
-.hero h1, .header h1 {
-  font-size: 46px;
-  letter-spacing: 2px;
-}
-
-.hero p, .header p {
-  margin-top: 15px;
-  max-width: 700px;
-  font-size: 14px;
-  color: rgba(255,255,255,0.65);
-  line-height: 1.7;
-}
-
-.tagline {
-  margin-top: 20px;
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: rgba(0,170,255,0.8);
-}
-
-/* ================= GRID ================= */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
-  padding: 40px 80px 100px;
-}
-
-/* ================= CARDS ================= */
-.card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 25px;
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  transition: 0.4s ease;
-
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(0,170,255,0.4);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-}
-
-/* stagger animation */
-.card:nth-child(1) { animation-delay: 0.1s; }
-.card:nth-child(2) { animation-delay: 0.2s; }
-.card:nth-child(3) { animation-delay: 0.3s; }
-.card:nth-child(4) { animation-delay: 0.4s; }
-
-/* ================= ANIMATION (SAFE) ================= */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ================= FOOTER ================= */
-footer {
-  padding: 60px;
-  text-align: center;
-  font-size: 12px;
-  color: rgba(255,255,255,0.5);
-}
-
-/* ================= RESPONSIVE ================= */
-@media (max-width: 900px) {
-
-  .nav {
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 15px 20px;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-    padding: 30px;
-  }
-
-  .hero, .header {
-    padding: 100px 25px 40px;
-  }
-
-  .hero h1, .header h1 {
-    font-size: 32px;
-  }
-}
-  
 body {
   font-family: 'Inter', sans-serif;
   background: #05070d;
@@ -212,13 +31,14 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: -2;
-  filter: brightness(0.35) contrast(1.1);
+  filter: brightness(0.3) contrast(1.15);
 }
 
 .overlay {
   position: fixed;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.95));
+  background: radial-gradient(circle at top, rgba(0,140,255,0.06), transparent 60%),
+              linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.95));
   z-index: -1;
 }
 
@@ -261,21 +81,35 @@ body {
   color: white;
 }
 
+.nav-links a.active {
+  color: white;
+}
+
+.nav-links a.active::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(0,170,255,0.8);
+  margin-top: 4px;
+}
+
 /* HEADER */
 .header {
-  padding: 140px 80px 60px;
+  padding: 140px 80px 40px;
 }
 
 .header h1 {
-  font-size: 42px;
+  font-size: 44px;
   letter-spacing: 2px;
 }
 
 .header p {
   margin-top: 15px;
-  max-width: 600px;
-  color: rgba(255,255,255,0.6);
+  max-width: 700px;
   font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
 }
 
 /* GRID */
@@ -286,31 +120,47 @@ body {
   padding: 40px 80px 100px;
 }
 
+/* CARD */
 .card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
-  padding: 25px;
+  padding: 28px;
   border-radius: 12px;
   backdrop-filter: blur(10px);
   transition: 0.4s ease;
+
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
 }
 
 .card:hover {
   transform: translateY(-6px);
   border-color: rgba(0,170,255,0.4);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
 .card h2 {
   font-size: 14px;
   letter-spacing: 1px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .card p {
   font-size: 13px;
   color: rgba(255,255,255,0.6);
   line-height: 1.6;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* FOOTER */
@@ -323,9 +173,20 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-  .grid { grid-template-columns: 1fr; }
-  .header, .grid { padding: 30px; }
-  .nav { padding: 15px 20px; flex-wrap: wrap; }
+  .grid {
+    grid-template-columns: 1fr;
+    padding: 30px;
+  }
+
+  .header {
+    padding: 110px 25px 30px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px 20px;
+  }
 }
 </style>
 </head>
@@ -345,7 +206,7 @@ footer {
 
   <div class="nav-links">
     <a href="index.html">Home</a>
-    <a href="systems.html">Systems</a>
+    <a href="systems.html" class="active">Systems</a>
     <a href="projects.html">Projects</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
@@ -356,31 +217,31 @@ footer {
 <section class="header">
   <h1>SYSTEMS ARCHITECTURE</h1>
   <p>
-    Modular aerospace systems designed for autonomous operation, intelligence processing, and defense-grade mission execution.
+    Modular aerospace systems engineered for autonomous flight, intelligent decision-making, and defense-grade operational control.
   </p>
 </section>
 
-<!-- SYSTEM GRID -->
+<!-- GRID -->
 <section class="grid">
 
   <div class="card">
     <h2>AUTONOMOUS FLIGHT CORE</h2>
-    <p>Adaptive control systems enabling fully autonomous aerial navigation with real-time environmental response.</p>
+    <p>Adaptive flight control system designed for fully autonomous aerial navigation and mission execution.</p>
   </div>
 
   <div class="card">
     <h2>AI NAVIGATION ENGINE</h2>
-    <p>Machine-learning driven navigation system optimizing routing, stability, and mission efficiency.</p>
+    <p>Machine learning-driven navigation system optimizing routing, stability, and environmental adaptation.</p>
   </div>
 
   <div class="card">
     <h2>DEFENSE GRID ARCHITECTURE</h2>
-    <p>Secure, distributed operational backbone for mission-critical aerospace systems.</p>
+    <p>Secure distributed system backbone supporting scalable aerospace and mission-critical operations.</p>
   </div>
 
   <div class="card">
-    <h2>REAL-TIME INTELLIGENCE SYSTEM</h2>
-    <p>High-speed data processing layer for surveillance, detection, and situational awareness.</p>
+    <h2>INTELLIGENCE PROCESSING LAYER</h2>
+    <p>Real-time data analysis system for surveillance, detection, and situational awareness.</p>
   </div>
 
 </section>
