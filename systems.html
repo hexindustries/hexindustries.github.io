@@ -1,40 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Systems | Hex Industries</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: 'Inter', sans-serif;
-  background: #0a0a0a;
-  color: #e5e5e5;
-  padding: 50px;
-}
-
-a {
-  color: #aaa;
-  text-decoration: none;
-}
-
-a:hover {
+  background: #05070d;
   color: white;
+  overflow-x: hidden;
+}
+
+/* VIDEO BACKGROUND */
+.video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  filter: brightness(0.35) contrast(1.1);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.95));
+  z-index: -1;
+}
+
+/* NAVBAR */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 18px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  z-index: 999;
+}
+
+.logo {
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  font-size: 12px;
+  text-decoration: none;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+/* HEADER */
+.header {
+  padding: 140px 80px 60px;
+}
+
+.header h1 {
+  font-size: 42px;
+  letter-spacing: 2px;
+}
+
+.header p {
+  margin-top: 15px;
+  max-width: 600px;
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  padding: 40px 80px 100px;
+}
+
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 25px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,170,255,0.4);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.card h2 {
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+
+/* FOOTER */
+footer {
+  padding: 60px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+  .header, .grid { padding: 30px; }
+  .nav { padding: 15px 20px; flex-wrap: wrap; }
 }
 </style>
 </head>
 
 <body>
 
-<a href="index.html">← Back to Home</a>
+<!-- VIDEO -->
+<video class="video-bg" autoplay muted loop>
+  <source src="1.mp4" type="video/mp4">
+</video>
 
-<h1>Systems</h1>
+<div class="overlay"></div>
 
-<p>
-Unmanned aerial systems, AI control systems, propulsion research platforms.
-</p>
+<!-- NAV -->
+<nav class="nav">
+  <div class="logo">HEX INDUSTRIES</div>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="systems.html">Systems</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<section class="header">
+  <h1>SYSTEMS ARCHITECTURE</h1>
+  <p>
+    Modular aerospace systems designed for autonomous operation, intelligence processing, and defense-grade mission execution.
+  </p>
+</section>
+
+<!-- SYSTEM GRID -->
+<section class="grid">
+
+  <div class="card">
+    <h2>AUTONOMOUS FLIGHT CORE</h2>
+    <p>Adaptive control systems enabling fully autonomous aerial navigation with real-time environmental response.</p>
+  </div>
+
+  <div class="card">
+    <h2>AI NAVIGATION ENGINE</h2>
+    <p>Machine-learning driven navigation system optimizing routing, stability, and mission efficiency.</p>
+  </div>
+
+  <div class="card">
+    <h2>DEFENSE GRID ARCHITECTURE</h2>
+    <p>Secure, distributed operational backbone for mission-critical aerospace systems.</p>
+  </div>
+
+  <div class="card">
+    <h2>REAL-TIME INTELLIGENCE SYSTEM</h2>
+    <p>High-speed data processing layer for surveillance, detection, and situational awareness.</p>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Hex Industries — Systems Division
+</footer>
 
 </body>
 </html>
