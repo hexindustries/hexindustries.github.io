@@ -11,7 +11,7 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background: #000;
-  color: #e5e5e5;
+  color: #f5f5f5;
 }
 
 /* VIDEO */
@@ -21,7 +21,7 @@ video {
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  opacity: 0.2;
+  opacity: 0.15;
 }
 
 /* OVERLAY */
@@ -30,7 +30,7 @@ body::before {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.8);
 }
 
 /* HEADER */
@@ -45,7 +45,7 @@ header {
 
 .tagline {
   font-size: 12px;
-  color: #777;
+  color: #aaa;
 }
 
 /* NAV */
@@ -54,7 +54,7 @@ nav {
 }
 
 nav a {
-  color: #888;
+  color: #bbb;
   margin-right: 25px;
   text-decoration: none;
   font-size: 14px;
@@ -95,6 +95,8 @@ nav a.active::after {
   max-width: 900px;
   font-weight: 700;
   line-height: 1.1;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255,255,255,0.15);
 }
 
 /* SECTION */
@@ -106,13 +108,14 @@ nav a.active::after {
 .title {
   font-size: 24px;
   margin-bottom: 20px;
+  color: #fff;
 }
 
-/* TEXT BLOCK */
+/* TEXT */
 .text {
   max-width: 800px;
-  color: #aaa;
-  line-height: 1.6;
+  color: #d0d0d0;
+  line-height: 1.7;
 }
 
 /* CARDS */
@@ -126,7 +129,7 @@ nav a.active::after {
 .card {
   padding: 25px;
   border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.02);
+  background: rgba(255,255,255,0.04);
   position: relative;
   overflow: hidden;
   transition: 0.4s;
@@ -153,12 +156,13 @@ nav a.active::after {
   border-color: rgba(255,255,255,0.3);
 }
 
+/* CARD TEXT */
 .card h3 {
   margin-bottom: 10px;
 }
 
 .card p {
-  color: #aaa;
+  color: #d0d0d0;
   font-size: 14px;
 }
 
@@ -193,7 +197,7 @@ footer {
   Engineering Autonomous Systems for the Next Era of Aerospace and Defense.
 </div>
 
-<!-- INTRO -->
+<!-- OVERVIEW -->
 <div class="section">
   <div class="title">Overview</div>
   <div class="text">
@@ -239,7 +243,7 @@ footer {
   </div>
 </div>
 
-<!-- OPERATIONS -->
+<!-- OPERATIONAL -->
 <div class="section">
   <div class="title">Operational Focus</div>
   <div class="cards">
