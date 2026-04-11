@@ -2,250 +2,156 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About | Hex Industries</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* BODY TRANSITION */
 body {
+  margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #05070d;
-  color: white;
+  background: black;
+  color: #e5e5e5;
   overflow-x: hidden;
-
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease;
-}
-
-body.loaded {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-body.fade-out {
-  opacity: 0;
-  transform: translateY(-20px);
 }
 
 /* VIDEO */
-.video-bg {
+#bg-video {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -2;
-  filter: brightness(0.35);
+  z-index: -1;
+  opacity: 0.25;
 }
 
 /* OVERLAY */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at top, rgba(0,140,255,0.05), transparent 60%),
-              linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.95));
-  z-index: -1;
-}
-
-/* NAV */
-.nav {
+body::before {
+  content: "";
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  padding: 18px 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(12px);
-  z-index: 999;
-}
-
-.nav-links {
-  display: flex;
-  gap: 25px;
-}
-
-.nav-links a {
-  color: rgba(255,255,255,0.7);
-  text-decoration: none;
-  font-size: 12px;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  z-index: 0;
 }
 
 /* HEADER */
-.header {
-  padding: 140px 80px 40px;
+header {
+  position: relative;
+  z-index: 1;
+  padding: 25px 50px;
 }
 
-.header h1 {
-  font-size: 46px;
-
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
-}
-
-.header p {
-  margin-top: 15px;
-  max-width: 700px;
-  font-size: 14px;
-  color: rgba(255,255,255,0.65);
-
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
-  animation-delay: 0.2s;
-}
-
-/* MISSION */
-.mission {
-  padding: 40px 80px;
-}
-
-.mission h2 {
+.logo {
   font-size: 18px;
-  margin-bottom: 15px;
-  color: rgba(0,170,255,0.8);
-
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
-  animation-delay: 0.3s;
+  letter-spacing: 2px;
 }
 
-.mission p {
-  max-width: 800px;
-  font-size: 14px;
-  color: rgba(255,255,255,0.65);
-
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
-  animation-delay: 0.4s;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 25px;
-  padding: 60px 80px;
-}
-
-/* CARDS */
-.card {
-  background: rgba(255,255,255,0.04);
-  padding: 25px;
-  border-radius: 10px;
-
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
-}
-
-.card:nth-child(1) { animation-delay: 0.5s; }
-.card:nth-child(2) { animation-delay: 0.6s; }
-.card:nth-child(3) { animation-delay: 0.7s; }
-
-.card:hover {
-  transform: translateY(-6px);
-}
-
-footer {
-  padding: 60px;
-  text-align: center;
+.tagline {
   font-size: 12px;
+  color: #777;
 }
 
-/* FADE UP */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* NAV */
+nav {
+  position: relative;
+  z-index: 1;
+  padding: 10px 50px;
 }
 
-/* MOBILE */
-@media(max-width:900px){
-  .grid { grid-template-columns:1fr; padding:30px; }
-  .header, .mission { padding:120px 25px 30px; }
+nav a {
+  position: relative;
+  color: #aaa;
+  margin-right: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: color 0.4s ease;
 }
 
+nav a:hover {
+  color: #fff;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 1px;
+  background: #fff;
+  transition: width 0.4s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ACTIVE PAGE */
+nav a.active {
+  color: #fff;
+}
+
+nav a.active::after {
+  width: 100%;
+}
+
+/* CONTENT */
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 120px 50px;
+  max-width: 800px;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+p {
+  line-height: 1.6;
+  color: #ccc;
+}
 </style>
 </head>
 
 <body>
 
-<video class="video-bg" autoplay muted loop playsinline>
+<!-- VIDEO -->
+<video autoplay muted loop playsinline id="bg-video">
   <source src="1.mp4" type="video/mp4">
 </video>
 
-<div class="overlay"></div>
+<!-- HEADER -->
+<header>
+  <div class="logo">HEX INDUSTRIES</div>
+  <div class="tagline">Innovating Tomorrow, Today.</div>
+</header>
 
-<nav class="nav">
-  <div>HEX INDUSTRIES</div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="systems.html">Systems</a>
-    <a href="projects.html">Projects</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
+<!-- NAV -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="systems.html">Systems</a>
+  <a href="projects.html">Projects</a>
+  <a href="about.html" class="active">About</a>
 </nav>
 
-<section class="header">
-  <h1>ABOUT HEX INDUSTRIES</h1>
-  <p>Advanced aerospace systems and autonomous technologies.</p>
-</section>
-
-<section class="mission">
-  <h2>MISSION</h2>
-  <p>To engineer intelligent aerospace systems with precision and adaptability.</p>
-</section>
-
-<section class="grid">
-  <div class="card">PRECISION</div>
-  <div class="card">AUTONOMY</div>
-  <div class="card">SCALABILITY</div>
-</section>
-
-<footer>
-© 2026 Hex Industries
-</footer>
-
-<!-- PAGE TRANSITION -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.body.classList.add("loaded");
-
-  document.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", function(e) {
-      if (this.hostname === window.location.hostname) {
-        e.preventDefault();
-        const url = this.href;
-
-        document.body.classList.remove("loaded");
-        document.body.classList.add("fade-out");
-
-        setTimeout(() => {
-          window.location = url;
-        }, 500);
-      }
-    });
-  });
-});
-</script>
+<!-- CONTENT -->
+<div class="content">
+  <h1>About</h1>
+  <p>
+    Hex Industries is an emerging aerospace and defense company focused on the development of advanced autonomous systems and next-generation aerospace platforms.
+  </p>
+  <p>
+    Our mission is to innovate at the intersection of engineering, intelligence, and precision, delivering systems designed for future operational environments.
+  </p>
+</div>
 
 </body>
 </html>
