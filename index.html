@@ -9,7 +9,7 @@
 
 <style>
 
-/* ================= RESET ================= */
+/* ================= BASE ================= */
 * {
   margin: 0;
   padding: 0;
@@ -21,6 +21,7 @@ body {
   background: #05070d;
   color: white;
   overflow-x: hidden;
+
   opacity: 0;
   transform: scale(1.015);
   animation: pageFlow 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -111,34 +112,35 @@ body {
 
 /* ================= HERO ================= */
 .hero {
-  padding: 160px 80px 60px;
+  padding: 170px 80px 60px;
 }
 
 .hero h1 {
-  font-size: 52px;
+  font-size: 54px;
   letter-spacing: 2px;
 }
 
 .hero p {
-  margin-top: 20px;
-  max-width: 750px;
+  margin-top: 18px;
+  max-width: 800px;
   font-size: 14px;
   color: rgba(255,255,255,0.65);
   line-height: 1.8;
 }
 
-/* ================= SECTIONS ================= */
+/* ================= SECTION BASE ================= */
 .section {
   padding: 60px 80px;
 }
 
-/* ================= CARDS (MATCH ABOUT HOVER) ================= */
+/* ================= GRID ================= */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
 }
 
+/* ================= CARD ================= */
 .card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
@@ -146,11 +148,7 @@ body {
   border-radius: 12px;
   backdrop-filter: blur(10px);
 
-  transition:
-    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-    background 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card:hover {
@@ -172,6 +170,40 @@ body {
   line-height: 1.6;
 }
 
+/* ================= SECTION TITLES ================= */
+.section-title {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: rgba(0,170,255,0.8);
+  margin-bottom: 25px;
+}
+
+/* ================= METRICS ================= */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.metric-box {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+}
+
+.metric-box h2 {
+  font-size: 26px;
+  color: rgba(0,170,255,0.9);
+}
+
+.metric-box p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 5px;
+}
+
 /* ================= FOOTER ================= */
 footer {
   padding: 60px;
@@ -182,7 +214,7 @@ footer {
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 900px) {
-  .grid {
+  .grid, .metrics {
     grid-template-columns: 1fr;
   }
 
@@ -233,29 +265,78 @@ footer {
 <section class="hero">
   <h1>HEX INDUSTRIES</h1>
   <p>
-    Advanced aerospace and autonomous systems initiative focused on next-generation intelligent systems, adaptive control architectures, and scalable aerospace technologies.
+    Advanced aerospace and autonomous systems initiative focused on next-generation intelligent systems, adaptive control architectures, and scalable mission technologies.
   </p>
 </section>
 
 <!-- SYSTEMS -->
 <section class="section">
+  <div class="section-title">SYSTEMS OVERVIEW</div>
+
   <div class="grid">
-
     <div class="card">
-      <h3>SYSTEMS</h3>
-      <p>Autonomous aerospace control and mission architecture systems.</p>
+      <h3>AUTONOMOUS FLIGHT</h3>
+      <p>Self-operating aerial systems with adaptive control logic.</p>
     </div>
 
     <div class="card">
-      <h3>PROJECTS</h3>
-      <p>Experimental technologies and advanced aerospace prototypes.</p>
+      <h3>MISSION AI</h3>
+      <p>Decision-making systems for autonomous mission execution.</p>
     </div>
 
     <div class="card">
-      <h3>RESEARCH</h3>
-      <p>Long-term development in autonomous intelligence systems.</p>
+      <h3>CONTROL ARCHITECTURE</h3>
+      <p>Core framework managing system-wide coordination.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="section">
+  <div class="section-title">CAPABILITIES</div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>REAL-TIME ADAPTATION</h3>
+      <p>Systems adjust dynamically to environmental changes.</p>
     </div>
 
+    <div class="card">
+      <h3>HIGH PRECISION CONTROL</h3>
+      <p>Accurate and stable multi-layer control systems.</p>
+    </div>
+
+    <div class="card">
+      <h3>SCALABLE DESIGN</h3>
+      <p>Built to expand into larger autonomous networks.</p>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="section">
+  <div class="section-title">SYSTEM STATUS</div>
+
+  <div class="metrics">
+    <div class="metric-box">
+      <h2>98%</h2>
+      <p>System Stability</p>
+    </div>
+
+    <div class="metric-box">
+      <h2>12+</h2>
+      <p>Active Modules</p>
+    </div>
+
+    <div class="metric-box">
+      <h2>7</h2>
+      <p>Core Systems</p>
+    </div>
+
+    <div class="metric-box">
+      <h2>24/7</h2>
+      <p>Operational Readiness</p>
+    </div>
   </div>
 </section>
 
