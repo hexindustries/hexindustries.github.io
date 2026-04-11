@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
 <title>Projects | Hex Industries</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ================= BASE ================= */
 * {
   margin: 0;
   padding: 0;
@@ -17,13 +15,13 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #05070d;
-  color: white;
+  background: #000;
+  color: rgba(255,255,255,0.75);
   overflow-x: hidden;
 }
 
-/* VIDEO */
-.video-bg {
+/* 🎥 VIDEO BACKGROUND */
+video {
   position: fixed;
   top: 0;
   left: 0;
@@ -31,169 +29,211 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: -2;
-  filter: brightness(0.3) contrast(1.15);
+  opacity: 0.32;
+  transform: scale(1.05);
 }
 
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at top, rgba(0,140,255,0.06), transparent 60%),
-              linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.95));
-  z-index: -1;
-}
-
-/* NAV */
-.nav {
+/* 🌑 OVERLAY */
+body::before {
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 18px 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  z-index: 999;
-}
-
-.logo {
-  font-size: 13px;
-  letter-spacing: 2px;
-  font-weight: 600;
-}
-
-.nav-links {
-  display: flex;
-  gap: 25px;
-}
-
-.nav-links a {
-  font-size: 12px;
-  text-decoration: none;
-  color: rgba(255,255,255,0.7);
-  letter-spacing: 1px;
-  transition: 0.3s;
-}
-
-.nav-links a:hover {
-  color: white;
-}
-
-.nav-links a.active {
-  color: white;
-}
-
-.nav-links a.active::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: rgba(0,170,255,0.8);
-  margin-top: 4px;
+  height: 100%;
+  background: radial-gradient(circle at top, rgba(0,0,0,0.35), rgba(0,0,0,0.9));
+  z-index: -1;
 }
 
 /* HEADER */
-.header {
-  padding: 140px 80px 40px;
+header {
+  padding: 25px 50px;
 }
 
-.header h1 {
-  font-size: 44px;
+.logo {
+  font-size: 18px;
   letter-spacing: 2px;
+  color: #fff;
+  font-weight: 500;
 }
 
-.header p {
-  margin-top: 15px;
-  max-width: 700px;
+.tagline {
+  font-size: 12px;
+  color: #777;
+}
+
+/* NAV */
+nav {
+  padding: 10px 50px;
+}
+
+nav a {
+  color: rgba(255,255,255,0.6);
+  margin-right: 25px;
+  text-decoration: none;
   font-size: 14px;
-  color: rgba(255,255,255,0.65);
-  line-height: 1.7;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+nav a:hover {
+  color: rgba(255,255,255,0.95);
+  transform: translateY(-1px);
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.7);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+}
+
+nav a.active {
+  color: rgba(255,255,255,0.95);
+}
+
+nav a.active::after {
+  transform: scaleX(1);
+}
+
+/* HERO */
+.hero {
+  padding: 180px 50px 120px;
+  max-width: 950px;
+}
+
+.hero-title {
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.05;
+  color: #fff;
+
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-sub {
+  margin-top: 18px;
+  font-size: 16px;
+  max-width: 650px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.25s;
+}
+
+/* SECTION */
+.section {
+  padding: 100px 50px;
+  max-width: 1200px;
+}
+
+.section-title {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 15px;
+}
+
+.section-head {
+  font-size: 24px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 40px;
+  max-width: 700px;
 }
 
 /* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
-  padding: 40px 80px 100px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
 }
 
-/* CARD */
+/* 🧠 PROJECT CARDS (DEFENSE PROGRAM STYLE) */
 .card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
   padding: 28px;
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  transition: 0.4s ease;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(8px);
 
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* scan line */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 1px;
+  background: rgba(255,255,255,0.45);
+  transition: 0.8s ease;
+}
+
+.card:hover::before {
+  left: 120%;
+}
+
+/* hover = mission activation feel */
 .card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(0,170,255,0.4);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  transform: translateY(-10px) scale(1.01);
+  border-color: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
 }
 
-.card h2 {
-  font-size: 14px;
-  letter-spacing: 1px;
-  margin-bottom: 12px;
+.card h3 {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
 }
 
 .card p {
-  font-size: 13px;
-  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
   line-height: 1.6;
 }
 
+/* STATUS TAG */
 .status {
-  margin-top: 12px;
+  margin-top: 15px;
   font-size: 11px;
-  letter-spacing: 1px;
-  color: rgba(0,170,255,0.8);
-  text-transform: uppercase;
-}
-
-/* ANIMATION */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  letter-spacing: 2px;
+  color: rgba(125,211,252,0.85);
 }
 
 /* FOOTER */
 footer {
-  padding: 60px;
-  text-align: center;
-  font-size: 12px;
-  color: rgba(255,255,255,0.5);
+  padding: 60px 50px;
+  font-size: 13px;
+  color: #555;
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: 1fr;
-    padding: 30px;
-  }
-
-  .header {
-    padding: 110px 25px 30px;
-  }
-
-  .nav {
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 15px 20px;
+/* ANIMATION */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>
@@ -202,65 +242,81 @@ footer {
 <body>
 
 <!-- VIDEO -->
-<video class="video-bg" autoplay muted loop>
+<video autoplay muted loop playsinline>
   <source src="1.mp4" type="video/mp4">
 </video>
 
-<div class="overlay"></div>
-
-<!-- NAV -->
-<nav class="nav">
+<header>
   <div class="logo">HEX INDUSTRIES</div>
+  <div class="tagline">Innovating Tomorrow, Today.</div>
+</header>
 
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="systems.html">Systems</a>
-    <a href="projects.html" class="active">Projects</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="systems.html">Systems</a>
+  <a href="projects.html" class="active">Projects</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
 </nav>
 
-<!-- HEADER -->
-<section class="header">
-  <h1>PROJECT PORTFOLIO</h1>
-  <p>
-    Advanced aerospace programs under development at Hex Industries, focusing on autonomous systems, distributed intelligence, and mission-critical architectures.
-  </p>
-</section>
+<div class="hero">
+  <div class="hero-title">
+    Active Development Programs
+  </div>
+  <div class="hero-sub">
+    Classified aerospace and autonomous systems under development across propulsion, AI control, and multi-domain mission architectures.
+  </div>
+</div>
 
-<!-- GRID -->
-<section class="grid">
-
-  <div class="card">
-    <h2>HEX-CORE</h2>
-    <p>Central autonomous control system for distributed aerial coordination and mission execution.</p>
-    <div class="status">ACTIVE DEVELOPMENT</div>
+<div class="section">
+  <div class="section-title">PROGRAM PORTFOLIO</div>
+  <div class="section-head">
+    Current engineering initiatives in autonomous aerospace and defense-grade systems.
   </div>
 
-  <div class="card">
-    <h2>SKYGRID NETWORK</h2>
-    <p>Multi-vehicle synchronization framework enabling real-time aerial coordination systems.</p>
-    <div class="status">RESEARCH PHASE</div>
+  <div class="grid">
+
+    <div class="card">
+      <h3>PROJECT AERONEX</h3>
+      <p>Next-generation autonomous aerial platform designed for adaptive multi-environment operations.</p>
+      <div class="status">IN DEVELOPMENT</div>
+    </div>
+
+    <div class="card">
+      <h3>PROJECT VELOCITY GRID</h3>
+      <p>High-speed distributed sensor and intelligence network for real-time mission awareness.</p>
+      <div class="status">PROTOTYPING</div>
+    </div>
+
+    <div class="card">
+      <h3>PROJECT ORBITAL SHIFT</h3>
+      <p>Experimental propulsion framework for atmospheric-to-orbital transition systems.</p>
+      <div class="status">RESEARCH PHASE</div>
+    </div>
+
+    <div class="card">
+      <h3>PROJECT NEURAL COMMAND</h3>
+      <p>AI-driven mission coordination system for autonomous fleet control.</p>
+      <div class="status">ACTIVE TESTING</div>
+    </div>
+
+    <div class="card">
+      <h3>PROJECT STRATOS CORE</h3>
+      <p>Structural aerospace platform optimized for extreme altitude endurance missions.</p>
+      <div class="status">DESIGN STAGE</div>
+    </div>
+
+    <div class="card">
+      <h3>PROJECT NIGHTFALL LINK</h3>
+      <p>Encrypted communication backbone for secure multi-domain operations.</p>
+      <div class="status">SIMULATION</div>
+    </div>
+
   </div>
+</div>
 
-  <div class="card">
-    <h2>PHANTOM LAYER</h2>
-    <p>Stealth optimization and signal reduction architecture for advanced aerospace systems.</p>
-    <div class="status">CONCEPTUAL</div>
-  </div>
-
-  <div class="card">
-    <h2>AERONET PRIME</h2>
-    <p>High-speed aerospace communication backbone for autonomous fleet intelligence sharing.</p>
-    <div class="status">TESTING</div>
-  </div>
-
-</section>
-
-<!-- FOOTER -->
 <footer>
-  © 2026 Hex Industries — Projects Division
+  © 2026 Hex Industries — Project Division
 </footer>
 
 </body>
