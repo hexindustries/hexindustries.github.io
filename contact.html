@@ -20,7 +20,58 @@ body {
   text-align: center;
   padding: 20px;
 }
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 18px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  z-index: 999;
+}
 
+.logo {
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  font-size: 12px;
+  text-decoration: none;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.search-box input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 7px 12px;
+  border-radius: 6px;
+  color: white;
+  font-size: 12px;
+  outline: none;
+}
+
+.search-box input::placeholder {
+  color: rgba(255,255,255,0.4);
+}
 .container {
   max-width: 600px;
 }
