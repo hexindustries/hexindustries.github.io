@@ -15,7 +15,7 @@ body {
   overflow-x: hidden;
 }
 
-/* VIDEO (same system as home) */
+/* 🎥 VIDEO BACKGROUND */
 video {
   position: fixed;
   top: 0;
@@ -24,21 +24,24 @@ video {
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  opacity: 0.28;
+  opacity: 0.30;
 }
 
-/* OVERLAY (same system) */
+/* DARK OVERLAY */
 body::before {
   content: "";
   position: fixed;
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.65);
+  z-index: 0;
 }
 
-/* HEADER (same system) */
+/* HEADER */
 header {
   padding: 25px 50px;
+  position: relative;
+  z-index: 2;
 }
 
 .logo {
@@ -53,9 +56,11 @@ header {
   color: #777;
 }
 
-/* NAV (same system) */
+/* NAV */
 nav {
   padding: 10px 50px;
+  position: relative;
+  z-index: 2;
 }
 
 nav a {
@@ -64,7 +69,7 @@ nav a {
   text-decoration: none;
   font-size: 14px;
   position: relative;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 nav a:hover {
@@ -75,11 +80,11 @@ nav a::after {
   content: "";
   position: absolute;
   bottom: -4px;
+  left: 0;
   width: 0%;
   height: 1px;
   background: rgba(255,255,255,0.8);
-  left: 0;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 nav a:hover::after {
@@ -94,14 +99,16 @@ nav a.active::after {
   width: 100%;
 }
 
-/* HERO (same layout, NEW meaning) */
+/* HERO */
 .hero {
-  padding: 200px 50px 140px;
+  padding: 190px 50px 120px;
   max-width: 900px;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-main {
-  font-size: 64px;
+  font-size: 60px;
   font-weight: 700;
   line-height: 1.05;
   color: rgba(255,255,255,0.9);
@@ -112,9 +119,10 @@ nav a.active::after {
 }
 
 .hero-sub {
+  margin-top: 20px;
   font-size: 16px;
-  max-width: 600px;
-  color: rgba(255,255,255,0.5);
+  max-width: 650px;
+  color: rgba(255,255,255,0.55);
   line-height: 1.6;
 
   opacity: 0;
@@ -123,10 +131,12 @@ nav a.active::after {
   animation-delay: 0.3s;
 }
 
-/* SECTION (same system) */
+/* SECTION */
 .section {
   padding: 110px 50px;
   max-width: 1100px;
+  position: relative;
+  z-index: 2;
 
   opacity: 0;
   transform: translateY(40px);
@@ -150,7 +160,7 @@ nav a.active::after {
   color: rgba(255,255,255,0.5);
 }
 
-/* CARDS (SAME DESIGN — this is important) */
+/* CARDS */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -174,7 +184,7 @@ nav a.active::after {
   width: 100%;
   height: 1px;
   background: rgba(255,255,255,0.4);
-  transition: 0.6s;
+  transition: 0.6s ease;
 }
 
 .card:hover::before {
@@ -195,6 +205,7 @@ nav a.active::after {
 .card p {
   color: rgba(255,255,255,0.5);
   font-size: 14px;
+  line-height: 1.5;
 }
 
 /* FOOTER */
@@ -202,8 +213,11 @@ footer {
   padding: 50px;
   font-size: 13px;
   color: #666;
+  position: relative;
+  z-index: 2;
 }
 
+/* ANIMATION */
 @keyframes fadeUp {
   to {
     opacity: 1;
@@ -215,6 +229,7 @@ footer {
 
 <body>
 
+<!-- VIDEO (MAKE SURE FILE NAME IS EXACT: 1.mp4) -->
 <video autoplay muted loop playsinline>
   <source src="1.mp4" type="video/mp4">
 </video>
@@ -224,6 +239,7 @@ footer {
   <div class="tagline">Innovating Tomorrow, Today.</div>
 </header>
 
+<!-- NAV (THIS FIXES YOUR REDIRECT ISSUE) -->
 <nav>
   <a href="index.html">Home</a>
   <a href="systems.html" class="active">Systems</a>
@@ -237,49 +253,49 @@ footer {
     Systems Engineering Division
   </div>
   <div class="hero-sub">
-    Internal architecture framework defining propulsion logic, autonomous control layers, sensor networks, and mission-critical software infrastructure.
+    Internal architecture framework governing autonomous control systems, propulsion logic, sensor networks, and mission-critical software infrastructure.
   </div>
 </div>
 
 <div class="section">
-  <div class="title">Core System Layers</div>
+  <div class="title">System Overview</div>
   <div class="text">
-    Hex Systems is structured as a layered engineering stack where each subsystem operates independently but integrates into a unified autonomous framework.
+    The Systems Division defines the internal structure of all Hex Industries platforms, integrating intelligence, propulsion, sensing, and communication into unified operational frameworks.
   </div>
 </div>
 
 <div class="section">
-  <div class="title">Subsystem Modules</div>
+  <div class="title">Core Subsystems</div>
 
   <div class="cards">
     <div class="card">
-      <h3>Autonomy Layer</h3>
-      <p>Decision intelligence engine enabling independent system behavior in dynamic environments.</p>
+      <h3>Autonomy Engine</h3>
+      <p>Real-time decision systems enabling independent mission execution in dynamic environments.</p>
     </div>
 
     <div class="card">
-      <h3>Propulsion Interface</h3>
-      <p>Energy and thrust management system optimized for multi-environment mobility.</p>
+      <h3>Propulsion Control Layer</h3>
+      <p>Adaptive thrust and energy distribution system for atmospheric and orbital performance.</p>
     </div>
 
     <div class="card">
-      <h3>Sensing Network</h3>
-      <p>Distributed sensor architecture for spatial awareness and environmental tracking.</p>
+      <h3>Sensor Integration Grid</h3>
+      <p>Multi-domain sensing network providing continuous environmental awareness.</p>
     </div>
 
     <div class="card">
-      <h3>Communication Mesh</h3>
-      <p>Secure data transmission layer connecting autonomous assets in real time.</p>
+      <h3>Secure Communication Mesh</h3>
+      <p>Encrypted high-speed data network connecting autonomous systems in real time.</p>
     </div>
 
     <div class="card">
-      <h3>Structural Systems</h3>
-      <p>Material architecture designed for stress distribution and long-duration missions.</p>
+      <h3>Structural Engineering Core</h3>
+      <p>Advanced composite framework designed for extreme stress and mission endurance.</p>
     </div>
 
     <div class="card">
-      <h3>Mission OS</h3>
-      <p>Centralized control software coordinating all subsystem interactions.</p>
+      <h3>Mission Control OS</h3>
+      <p>Central orchestration system coordinating all autonomous and operational layers.</p>
     </div>
   </div>
 </div>
