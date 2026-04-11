@@ -21,7 +21,9 @@ html, body {
   color: rgba(255,255,255,0.78);
 }
 
-/* 🔥 FIXED VIDEO SYSTEM (NO MOBILE GLITCH) */
+/* =========================
+   VIDEO BACKGROUND (FIXED)
+========================= */
 .video-wrap {
   position: fixed;
   inset: 0;
@@ -34,25 +36,27 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-
-  transform: scale(1.08) translateZ(0);
-  will-change: transform;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  transform: scale(1.08);
 }
 
-/* DARK OVERLAY */
+/* =========================
+   OVERLAY (FIXED LAYER)
+========================= */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at top, rgba(0,0,0,0.35), rgba(0,0,0,0.92));
+  background: radial-gradient(circle at top, rgba(0,0,0,0.35), rgba(0,0,0,0.88));
   z-index: -1;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 header {
   padding: 25px 50px;
+  position: relative;
+  z-index: 2;
 }
 
 .logo {
@@ -70,6 +74,8 @@ header {
 /* NAV */
 nav {
   padding: 10px 50px;
+  position: relative;
+  z-index: 2;
 }
 
 nav a {
@@ -78,7 +84,7 @@ nav a {
   text-decoration: none;
   font-size: 14px;
   position: relative;
-  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 nav a:hover {
@@ -96,7 +102,7 @@ nav a::after {
   background: rgba(255,255,255,0.7);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 nav a:hover::after {
@@ -111,10 +117,14 @@ nav a.active::after {
   transform: scaleX(1);
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 .hero {
   padding: 190px 50px 120px;
   max-width: 900px;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-title {
@@ -141,10 +151,14 @@ nav a.active::after {
   animation-delay: 0.25s;
 }
 
-/* SECTION */
+/* =========================
+   SECTIONS
+========================= */
 .section {
   padding: 100px 50px;
   max-width: 1100px;
+  position: relative;
+  z-index: 2;
 }
 
 .title {
@@ -158,7 +172,6 @@ nav a.active::after {
   font-size: 24px;
   color: rgba(255,255,255,0.9);
   margin-bottom: 25px;
-  max-width: 750px;
   line-height: 1.4;
 }
 
@@ -168,7 +181,9 @@ nav a.active::after {
   color: rgba(255,255,255,0.55);
 }
 
-/* CARDS */
+/* =========================
+   CARDS
+========================= */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -180,10 +195,9 @@ nav a.active::after {
   padding: 28px;
   border: 1px solid rgba(255,255,255,0.06);
   background: rgba(255,255,255,0.02);
-
-  transition: all 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
+  transition: all 0.5s ease;
 }
 
 /* scan line */
@@ -220,12 +234,16 @@ nav a.active::after {
   line-height: 1.6;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 footer {
   padding: 60px 50px;
   font-size: 13px;
   color: #555;
   border-top: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+  z-index: 2;
 }
 
 /* ANIMATION */
@@ -236,14 +254,14 @@ footer {
   }
 }
 
-/* MOBILE FIX */
+/* MOBILE */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 40px;
   }
 
   .video-wrap video {
-    transform: scale(1.15) translateZ(0);
+    transform: scale(1.15);
   }
 }
 </style>
@@ -251,7 +269,7 @@ footer {
 
 <body>
 
-<!-- ✅ FIXED VIDEO SYSTEM -->
+<!-- ✅ FIXED VIDEO (WORKING GUARANTEE) -->
 <div class="video-wrap">
   <video autoplay muted loop playsinline>
     <source src="1.mp4" type="video/mp4">
@@ -276,17 +294,17 @@ footer {
     Engineering the Future of Autonomous Aerospace Systems
   </div>
   <div class="hero-sub">
-    Hex Industries is a systems engineering organization focused on advanced aerospace, autonomous intelligence, and mission-critical architectures.
+    Hex Industries is an advanced engineering organization focused on aerospace systems, autonomy, and mission-critical architectures.
   </div>
 </div>
 
 <div class="section">
   <div class="title">WHO WE ARE</div>
   <div class="headline">
-    A next-generation engineering organization building scalable autonomous systems for air, space, and high-complexity environments.
+    A systems engineering organization building scalable autonomous platforms for air and space domains.
   </div>
   <div class="text">
-    We design modular architectures that unify propulsion, autonomy, sensing, and control systems into cohesive mission-ready platforms.
+    We design modular architectures that unify propulsion, intelligence, sensing, and control into integrated mission systems.
   </div>
 </div>
 
@@ -295,18 +313,18 @@ footer {
 
   <div class="cards">
     <div class="card">
-      <h3>Systems Integration</h3>
-      <p>Every subsystem is designed to operate independently while integrating seamlessly into larger architectures.</p>
+      <h3>Modular Design</h3>
+      <p>Every system operates independently but integrates into larger mission frameworks.</p>
     </div>
 
     <div class="card">
-      <h3>Autonomous First Design</h3>
-      <p>We prioritize intelligence-driven systems capable of independent decision-making in real-time environments.</p>
+      <h3>Autonomy First</h3>
+      <p>We build systems capable of real-time independent decision-making.</p>
     </div>
 
     <div class="card">
-      <h3>Scalable Architecture</h3>
-      <p>All systems are built to evolve across mission types, environments, and operational scales.</p>
+      <h3>Scalable Systems</h3>
+      <p>Architecture designed to evolve across mission complexity levels.</p>
     </div>
   </div>
 </div>
@@ -314,12 +332,12 @@ footer {
 <div class="section">
   <div class="title">GLOBAL VISION</div>
   <div class="text">
-    Our long-term objective is to develop fully autonomous aerospace systems capable of coordinated multi-domain operations with adaptive intelligence and resilient control frameworks.
+    Our goal is to build fully autonomous aerospace systems capable of coordinated multi-domain operations.
   </div>
 </div>
 
 <footer>
-  © 2026 Hex Industries — About Division
+  © 2026 Hex Industries
 </footer>
 
 </body>
