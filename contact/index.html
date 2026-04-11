@@ -1,1 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact | Hex Industries</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #000;
+  color: rgba(255,255,255,0.75);
+  overflow-x: hidden;
+}
+
+/* 🎥 VIDEO BACKGROUND */
+video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  opacity: 0.32;
+  transform: scale(1.05);
+}
+
+/* 🌑 OVERLAY */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top, rgba(0,0,0,0.35), rgba(0,0,0,0.92));
+  z-index: -1;
+}
+
+/* HEADER */
+header {
+  padding: 25px 50px;
+}
+
+.logo {
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.tagline {
+  font-size: 12px;
+  color: #777;
+}
+
+/* NAV */
+nav {
+  padding: 10px 50px;
+}
+
+nav a {
+  color: rgba(255,255,255,0.6);
+  margin-right: 25px;
+  text-decoration: none;
+  font-size: 14px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+nav a:hover {
+  color: rgba(255,255,255,0.95);
+  transform: translateY(-1px);
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.7);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+}
+
+nav a.active {
+  color: rgba(255,255,255,0.95);
+}
+
+nav a.active::after {
+  transform: scaleX(1);
+}
+
+/* HERO */
+.hero {
+  padding: 180px 50px 120px;
+  max-width: 900px;
+}
+
+.hero-title {
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.05;
+  color: #fff;
+
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-sub {
+  margin-top: 18px;
+  font-size: 16px;
+  max-width: 650px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.25s;
+}
+
+/* SECTION */
+.section {
+  padding: 100px 50px;
+  max-width: 1100px;
+}
+
+.title {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 15px;
+}
+
+.headline {
+  font-size: 24px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 20px;
+  max-width: 750px;
+  line-height: 1.4;
+}
+
+.text {
+  max-width: 750px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.55);
+}
+
+/* STATUS PANELS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card {
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(8px);
+
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* scan line */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 1px;
+  background: rgba(255,255,255,0.45);
+  transition: 0.8s ease;
+}
+
+.card:hover::before {
+  left: 120%;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.01);
+  border-color: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+}
+
+.card h3 {
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+}
+
+/* STATUS LABELS */
+.status {
+  margin-top: 15px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: rgba(125,211,252,0.85);
+}
+
+/* FOOTER */
+footer {
+  padding: 60px 50px;
+  font-size: 13px;
+  color: #555;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO -->
+<video autoplay muted loop playsinline>
+  <source src="1.mp4" type="video/mp4">
+</video>
+
+<header>
+  <div class="logo">HEX INDUSTRIES</div>
+  <div class="tagline">Innovating Tomorrow, Today.</div>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="systems.html">Systems</a>
+  <a href="projects.html">Projects</a>
+  <a href="about.html">About</a>
+  <a href="contact.html" class="active">Contact</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-title">
+    Communication Systems
+  </div>
+  <div class="hero-sub">
+    External communication channels are currently under restricted development within secure engineering environments.
+  </div>
+</div>
+
+<div class="section">
+  <div class="title">ACCESS STATUS</div>
+  <div class="headline">
+    Public communication channels are not yet active.
+  </div>
+  <div class="text">
+    Hex Industries is currently operating in a closed development phase. External communication interfaces will be enabled after initial system validation and security architecture finalization.
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Public Contact Interface</h3>
+      <p>Not available during early-stage development cycle.</p>
+      <div class="status">RESTRICTED</div>
+    </div>
+
+    <div class="card">
+      <h3>Secure Messaging Network</h3>
+      <p>Internal-only communication channel for engineering teams.</p>
+      <div class="status">CLASSIFIED</div>
+    </div>
+
+    <div class="card">
+      <h3>External Inquiry System</h3>
+      <p>Planned for future deployment after platform stabilization.</p>
+      <div class="status">PENDING RELEASE</div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  © 2026 Hex Industries — Communication Division
+</footer>
+
+</body>
+</html>
