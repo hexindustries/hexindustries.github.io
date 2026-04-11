@@ -8,17 +8,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* PAGE TRANSITION BASE */
 body {
   font-family: 'Inter', sans-serif;
   background: #05070d;
   color: white;
   overflow-x: hidden;
+
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+body.fade-out {
+  opacity: 0;
 }
 
 /* VIDEO */
@@ -30,9 +44,10 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: -2;
-  filter: brightness(0.25) contrast(1.2);
+  filter: brightness(0.35) contrast(1.15);
 }
 
+/* OVERLAY (MATCHED STYLE) */
 .overlay {
   position: fixed;
   inset: 0;
@@ -45,12 +60,12 @@ body {
 .nav {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
   padding: 18px 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   background: rgba(0,0,0,0.35);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -72,7 +87,6 @@ body {
   font-size: 12px;
   text-decoration: none;
   color: rgba(255,255,255,0.7);
-  letter-spacing: 1px;
   transition: 0.3s;
 }
 
@@ -98,7 +112,7 @@ body {
   line-height: 1.8;
 }
 
-/* MISSION BLOCK */
+/* MISSION */
 .mission {
   padding: 60px 80px;
   max-width: 900px;
@@ -117,7 +131,7 @@ body {
   color: rgba(255,255,255,0.65);
 }
 
-/* CORE VALUES */
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -125,13 +139,14 @@ body {
   padding: 60px 80px 100px;
 }
 
+/* CARDS (SMOOTH HOVER) */
 .card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
   padding: 25px;
   border-radius: 12px;
-  backdrop-filter: blur(10px);
-  transition: 0.4s ease;
+
+  transition: transform 0.4s ease, border 0.4s ease;
 }
 
 .card:hover {
@@ -141,14 +156,12 @@ body {
 
 .card h3 {
   font-size: 13px;
-  letter-spacing: 1px;
   margin-bottom: 10px;
 }
 
 .card p {
   font-size: 13px;
   color: rgba(255,255,255,0.6);
-  line-height: 1.6;
 }
 
 /* FOOTER */
@@ -159,19 +172,30 @@ footer {
   color: rgba(255,255,255,0.5);
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 @media (max-width: 900px) {
-  .grid { grid-template-columns: 1fr; }
-  .header, .mission, .grid { padding: 30px; }
-  .nav { padding: 15px 20px; flex-wrap: wrap; }
+  .grid {
+    grid-template-columns: 1fr;
+    padding: 30px;
+  }
+
+  .header, .mission {
+    padding: 110px 25px 30px;
+  }
+
+  .nav {
+    padding: 15px 20px;
+    flex-wrap: wrap;
+  }
 }
+
 </style>
 </head>
 
 <body>
 
 <!-- VIDEO -->
-<video class="video-bg" autoplay muted loop>
+<video class="video-bg" autoplay muted loop playsinline>
   <source src="1.mp4" type="video/mp4">
 </video>
 
@@ -202,36 +226,55 @@ footer {
 <section class="mission">
   <h2>MISSION</h2>
   <p>
-    To engineer highly autonomous, intelligent aerospace systems capable of adapting to complex environments while maintaining precision, reliability, and operational efficiency.  
-    <br><br>
-    We focus on long-term technological evolution in aerospace systems, distributed intelligence, and modular defense-grade architectures.
+    To engineer highly autonomous, intelligent aerospace systems capable of adapting to complex environments while maintaining precision, reliability, and operational efficiency.
   </p>
 </section>
 
-<!-- CORE VALUES -->
+<!-- VALUES -->
 <section class="grid">
-
   <div class="card">
     <h3>PRECISION</h3>
-    <p>Every system is designed with engineering accuracy and controlled performance behavior.</p>
+    <p>Engineering accuracy and controlled performance behavior.</p>
   </div>
 
   <div class="card">
     <h3>AUTONOMY</h3>
-    <p>We build systems capable of independent decision-making and adaptive control.</p>
+    <p>Independent decision-making systems.</p>
   </div>
 
   <div class="card">
     <h3>SCALABILITY</h3>
-    <p>All architectures are designed to expand into larger integrated networks.</p>
+    <p>Expandable into large aerospace networks.</p>
   </div>
-
 </section>
 
 <!-- FOOTER -->
 <footer>
   © 2026 Hex Industries — Mission Division
 </footer>
+
+<!-- PAGE TRANSITION SCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("loaded");
+
+  document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function(e) {
+      if (this.hostname === window.location.hostname) {
+        e.preventDefault();
+        const url = this.href;
+
+        document.body.classList.remove("loaded");
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+          window.location = url;
+        }, 400);
+      }
+    });
+  });
+});
+</script>
 
 </body>
 </html>
