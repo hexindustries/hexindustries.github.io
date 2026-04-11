@@ -10,11 +10,12 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #0a0a0a;
+  background: black;
   color: #e5e5e5;
+  overflow-x: hidden;
 }
 
-/* BACKGROUND VIDEO */
+/* VIDEO */
 #bg-video {
   position: fixed;
   top: 0;
@@ -26,7 +27,7 @@ body {
   opacity: 0.25;
 }
 
-/* DARK OVERLAY */
+/* OVERLAY */
 body::before {
   content: "";
   position: fixed;
@@ -38,27 +39,36 @@ body::before {
   z-index: 0;
 }
 
-/* KEEP CONTENT ABOVE VIDEO */
-header, nav, .content, footer {
+/* CONTENT ABOVE VIDEO */
+header, nav, .hero, .section, footer {
   position: relative;
   z-index: 1;
 }
 
 /* HEADER */
 header {
-  padding: 20px 50px;
+  padding: 25px 50px;
+}
+
+.logo {
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.tagline {
+  font-size: 12px;
+  color: #777;
 }
 
 /* NAV */
 nav {
-  padding: 0 50px;
-  margin-bottom: 40px;
+  padding: 10px 50px;
 }
 
 nav a {
   position: relative;
   color: #aaa;
-  margin-right: 25px;
+  margin-right: 30px;
   text-decoration: none;
   font-size: 14px;
   transition: color 0.4s ease;
@@ -72,7 +82,7 @@ nav a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -4px;
+  bottom: -5px;
   width: 0%;
   height: 1px;
   background: #fff;
@@ -83,7 +93,7 @@ nav a:hover::after {
   width: 100%;
 }
 
-/* ACTIVE PAGE */
+/* ACTIVE */
 nav a.active {
   color: #fff;
 }
@@ -92,26 +102,29 @@ nav a.active::after {
   width: 100%;
 }
 
-/* CONTENT */
-.content {
-  padding: 80px 50px;
+/* HERO (MATCH HOMEPAGE STYLE) */
+.hero {
+  padding: 120px 50px;
+  font-size: 42px;
+  font-weight: 700;
   max-width: 900px;
 }
 
-h1 {
-  font-size: 32px;
-  margin-bottom: 20px;
+/* SECTION (MATCH HOMEPAGE STYLE) */
+.section {
+  padding: 70px 50px;
+  max-width: 900px;
 }
 
-p {
-  line-height: 1.6;
-  color: #ccc;
+.title {
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
 /* FOOTER */
 footer {
   padding: 40px 50px;
-  font-size: 14px;
+  font-size: 13px;
   color: #777;
 }
 </style>
@@ -125,8 +138,8 @@ footer {
 </video>
 
 <header>
-  <div>HEX INDUSTRIES</div>
-  <div style="font-size:12px; color:#777;">Innovating Tomorrow, Today.</div>
+  <div class="logo">HEX INDUSTRIES</div>
+  <div class="tagline">Innovating Tomorrow, Today.</div>
 </header>
 
 <nav>
@@ -136,13 +149,23 @@ footer {
   <a href="about.html" class="active">About</a>
 </nav>
 
-<div class="content">
-  <h1>About</h1>
+<!-- HERO -->
+<div class="hero">
+  About Hex Industries
+</div>
+
+<!-- CONTENT -->
+<div class="section">
+  <div class="title">Our Mission</div>
   <p>
     Hex Industries is an emerging aerospace and defense company focused on the development of advanced autonomous systems and next-generation aerospace platforms.
   </p>
+</div>
+
+<div class="section">
+  <div class="title">Vision</div>
   <p>
-    Our mission is to innovate at the intersection of engineering, intelligence, and precision, delivering systems designed for future operational environments.
+    We aim to innovate at the intersection of engineering, intelligence, and precision, delivering systems designed for future operational environments.
   </p>
 </div>
 
