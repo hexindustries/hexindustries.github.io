@@ -26,7 +26,22 @@
   height: 1px;
   background: rgba(0,170,255,0.8);
 }
+.section, .grid, .header, .hero {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: pageLoad 0.9s ease forwards;
+}
 
+.grid { animation-delay: 0.2s; }
+.header { animation-delay: 0.1s; }
+.hero { animation-delay: 0.1s; }
+
+@keyframes pageLoad {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 body {
   font-family: 'Inter', sans-serif;
   background: #05070d;
