@@ -7,20 +7,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
+  margin: 0;
   font-family: 'Inter', sans-serif;
   background: #000;
   color: rgba(255,255,255,0.75);
   overflow-x: hidden;
 }
 
-/* 🎥 VIDEO BACKGROUND (VISIBLE BUT CONTROLLED) */
+/* VIDEO (same system as home) */
 video {
   position: fixed;
   top: 0;
@@ -28,26 +23,22 @@ video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -2;
-  opacity: 0.38; /* IMPORTANT: visibility */
-  transform: scale(1.05);
+  z-index: -1;
+  opacity: 0.28;
 }
 
-/* 🌑 DARK OVERLAY (keeps readability but doesn't kill video) */
+/* OVERLAY (same system) */
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at top, rgba(0,0,0,0.35), rgba(0,0,0,0.88));
-  z-index: -1;
+  background: rgba(0,0,0,0.65);
 }
 
-/* HEADER */
+/* HEADER (same system) */
 header {
-  padding: 26px 55px;
+  padding: 25px 50px;
 }
 
 .logo {
@@ -59,177 +50,160 @@ header {
 
 .tagline {
   font-size: 12px;
-  color: #666;
-  margin-top: 4px;
+  color: #777;
 }
 
-/* NAV */
+/* NAV (same system) */
 nav {
-  padding: 10px 55px;
+  padding: 10px 50px;
 }
 
 nav a {
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.6);
   margin-right: 25px;
   text-decoration: none;
   font-size: 14px;
   position: relative;
-  transition: all 0.35s ease;
+  transition: 0.3s;
 }
 
 nav a:hover {
-  color: #fff;
-  transform: translateY(-2px);
+  color: rgba(255,255,255,0.9);
 }
 
 nav a::after {
   content: "";
   position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
+  bottom: -4px;
+  width: 0%;
   height: 1px;
-  background: rgba(255,255,255,0.7);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
+  background: rgba(255,255,255,0.8);
+  left: 0;
+  transition: 0.3s;
 }
 
 nav a:hover::after {
-  transform: scaleX(1);
+  width: 100%;
 }
 
 nav a.active {
-  color: #fff;
+  color: rgba(255,255,255,0.9);
 }
 
 nav a.active::after {
-  transform: scaleX(1);
+  width: 100%;
 }
 
-/* HERO */
+/* HERO (same layout, NEW meaning) */
 .hero {
-  padding: 170px 55px 90px;
-  max-width: 950px;
+  padding: 200px 50px 140px;
+  max-width: 900px;
 }
 
-.hero-title {
-  font-size: 56px;
+.hero-main {
+  font-size: 64px;
   font-weight: 700;
-  color: #fff;
   line-height: 1.05;
+  color: rgba(255,255,255,0.9);
 
   opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
 }
 
 .hero-sub {
-  margin-top: 18px;
-  font-size: 15px;
-  max-width: 650px;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.7;
+  font-size: 16px;
+  max-width: 600px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
 
   opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: 0.2s;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.3s;
 }
 
-/* SECTION */
+/* SECTION (same system) */
 .section {
-  padding: 90px 55px;
-  max-width: 1200px;
+  padding: 110px 50px;
+  max-width: 1100px;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
 }
 
-.section-title {
-  font-size: 12px;
-  letter-spacing: 3px;
-  color: rgba(255,255,255,0.45);
-  margin-bottom: 15px;
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.section-head {
-  font-size: 24px;
-  color: rgba(255,255,255,0.9);
-  margin-bottom: 40px;
+.title {
+  font-size: 20px;
+  margin-bottom: 25px;
+  color: rgba(255,255,255,0.85);
+}
+
+.text {
   max-width: 700px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.5);
 }
 
-/* GRID */
-.grid {
+/* CARDS (SAME DESIGN — this is important) */
+.cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
 }
 
-/* 🧠 SYSTEM CARDS (CLEAR + STRONG HOVER) */
 .card {
   padding: 28px;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.02);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.025);
+  transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
-
-  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* scan line */
 .card::before {
   content: "";
   position: absolute;
   top: 0;
-  left: -120%;
-  width: 120%;
+  left: -100%;
+  width: 100%;
   height: 1px;
   background: rgba(255,255,255,0.4);
-  transition: 0.7s ease;
+  transition: 0.6s;
 }
 
 .card:hover::before {
-  left: 120%;
+  left: 100%;
 }
 
-/* 🔥 CLEAR HOME-LIKE HOVER STYLE */
 .card:hover {
   transform: translateY(-10px);
-  border-color: rgba(255,255,255,0.22);
-  background: rgba(255,255,255,0.06);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+  border-color: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
 }
 
 .card h3 {
-  font-size: 16px;
-  color: #fff;
   margin-bottom: 10px;
-  letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.9);
 }
 
 .card p {
+  color: rgba(255,255,255,0.5);
   font-size: 14px;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.6;
-}
-
-/* TAG */
-.tag {
-  margin-top: 16px;
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: rgba(125,211,252,0.8);
 }
 
 /* FOOTER */
 footer {
-  padding: 60px 55px;
+  padding: 50px;
   font-size: 13px;
-  color: #555;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  color: #666;
 }
 
-/* ANIMATION */
 @keyframes fadeUp {
   to {
     opacity: 1;
@@ -241,7 +215,6 @@ footer {
 
 <body>
 
-<!-- 🎥 VIDEO -->
 <video autoplay muted loop playsinline>
   <source src="1.mp4" type="video/mp4">
 </video>
@@ -260,64 +233,74 @@ footer {
 </nav>
 
 <div class="hero">
-  <div class="hero-title">
+  <div class="hero-main">
     Systems Engineering Division
   </div>
   <div class="hero-sub">
-    Integrated architecture stack powering autonomous aerospace platforms, mission intelligence layers, and adaptive defense systems.
+    Internal architecture framework defining propulsion logic, autonomous control layers, sensor networks, and mission-critical software infrastructure.
   </div>
 </div>
 
 <div class="section">
-  <div class="section-title">ARCHITECTURE STACK</div>
-  <div class="section-head">
-    Modular systems designed for autonomy, resilience, and multi-domain coordination.
+  <div class="title">Core System Layers</div>
+  <div class="text">
+    Hex Systems is structured as a layered engineering stack where each subsystem operates independently but integrates into a unified autonomous framework.
   </div>
+</div>
 
-  <div class="grid">
+<div class="section">
+  <div class="title">Subsystem Modules</div>
 
+  <div class="cards">
     <div class="card">
-      <h3>AUTONOMY CORE ENGINE</h3>
-      <p>Decision-making framework enabling independent mission execution in dynamic environments.</p>
-      <div class="tag">AI CONTROL</div>
+      <h3>Autonomy Layer</h3>
+      <p>Decision intelligence engine enabling independent system behavior in dynamic environments.</p>
     </div>
 
     <div class="card">
-      <h3>VECTOR PROPULSION LAYER</h3>
-      <p>Adaptive propulsion system optimized for atmospheric + orbital transition efficiency.</p>
-      <div class="tag">PROPULSION</div>
+      <h3>Propulsion Interface</h3>
+      <p>Energy and thrust management system optimized for multi-environment mobility.</p>
     </div>
 
     <div class="card">
-      <h3>SPECTRUM SENSOR NETWORK</h3>
-      <p>Multi-layer sensing grid for real-time environmental mapping and detection systems.</p>
-      <div class="tag">SENSING</div>
+      <h3>Sensing Network</h3>
+      <p>Distributed sensor architecture for spatial awareness and environmental tracking.</p>
     </div>
 
     <div class="card">
-      <h3>SECURE LINK FABRIC</h3>
-      <p>Encrypted high-speed communication backbone for distributed autonomous fleets.</p>
-      <div class="tag">COMMUNICATION</div>
+      <h3>Communication Mesh</h3>
+      <p>Secure data transmission layer connecting autonomous assets in real time.</p>
     </div>
 
     <div class="card">
-      <h3>STRUCTURAL FRAME MATRIX</h3>
-      <p>High-strength composite architecture designed for extreme load and thermal resistance.</p>
-      <div class="tag">STRUCTURE</div>
+      <h3>Structural Systems</h3>
+      <p>Material architecture designed for stress distribution and long-duration missions.</p>
     </div>
 
     <div class="card">
-      <h3>MISSION OS CORE</h3>
-      <p>Centralized control layer managing system synchronization and operational logic.</p>
-      <div class="tag">SOFTWARE</div>
+      <h3>Mission OS</h3>
+      <p>Centralized control software coordinating all subsystem interactions.</p>
     </div>
-
   </div>
 </div>
 
 <footer>
-  © 2026 Hex Industries — Systems Division
+  © 2026 Hex Industries
 </footer>
+
+<script>
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll', () => {
+  const trigger = window.innerHeight * 0.85;
+
+  sections.forEach(sec => {
+    if (sec.getBoundingClientRect().top < trigger) {
+      sec.classList.add('show');
+    }
+  });
+});
+</script>
 
 </body>
 </html>
