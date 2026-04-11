@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact | Hex Industries</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #05070d;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* VIDEO */
+.video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  filter: brightness(0.25) contrast(1.2);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.95));
+  z-index: -1;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 18px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  z-index: 999;
+}
+
+.logo {
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  font-size: 12px;
+  text-decoration: none;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+/* MAIN */
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 80px;
+}
+
+.container h1 {
+  font-size: 42px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.container p {
+  max-width: 650px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.65);
+}
+
+/* STATUS BOX */
+.status {
+  margin-top: 30px;
+  display: inline-block;
+  padding: 14px 18px;
+  border: 1px solid rgba(0,170,255,0.3);
+  border-radius: 10px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: rgba(0,170,255,0.85);
+  text-transform: uppercase;
+}
+
+/* FOOTER NOTE */
+.note {
+  margin-top: 25px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  max-width: 600px;
+}
+
+/* NAV RESPONSIVE */
+@media (max-width: 900px) {
+  .container { padding: 0 30px; }
+  .nav { padding: 15px 20px; flex-wrap: wrap; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO -->
+<video class="video-bg" autoplay muted loop>
+  <source src="1.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="logo">HEX INDUSTRIES</div>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="systems.html">Systems</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<section class="container">
+  <h1>CONTACT</h1>
+
+  <p>
+    Hex Industries is currently operating in an early development phase.  
+    Communication channels are not publicly open at this time.
+  </p>
+
+  <div class="status">
+    COMMUNICATION CHANNELS RESTRICTED
+  </div>
+
+  <div class="note">
+    For strategic collaborations or future partnership inquiries, access protocols will be announced once the operational framework is fully established.
+  </div>
+</section>
+
+</body>
+</html>
