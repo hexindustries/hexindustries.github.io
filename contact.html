@@ -2,19 +2,25 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Hex Industries</title>
+<title>Contact | Hex Industries</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
+* {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: #000;
-  color: #e5e5e5;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* VIDEO BACKGROUND */
+body {
+  font-family: 'Inter', sans-serif;
+  background: #000;
+  color: rgba(255,255,255,0.75);
+  overflow-x: hidden;
+}
+
+/* 🎥 VIDEO BACKGROUND */
 video {
   position: fixed;
   top: 0;
@@ -22,28 +28,33 @@ video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1;
-  opacity: 0.2;
+  z-index: -2;
+  opacity: 0.32;
+  transform: scale(1.05);
 }
 
-/* OVERLAY */
+/* 🌑 OVERLAY */
 body::before {
   content: "";
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.7);
+  background: radial-gradient(circle at top, rgba(0,0,0,0.35), rgba(0,0,0,0.92));
+  z-index: -1;
 }
 
 /* HEADER */
 header {
   padding: 25px 50px;
-  position: relative;
 }
 
 .logo {
   font-size: 18px;
   letter-spacing: 2px;
+  color: #fff;
+  font-weight: 500;
 }
 
 .tagline {
@@ -57,109 +68,178 @@ nav {
 }
 
 nav a {
-  color: #888;
+  color: rgba(255,255,255,0.6);
   margin-right: 25px;
   text-decoration: none;
   font-size: 14px;
   position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 nav a:hover {
-  color: #fff;
+  color: rgba(255,255,255,0.95);
+  transform: translateY(-1px);
 }
 
 nav a::after {
   content: "";
   position: absolute;
-  bottom: -4px;
+  bottom: -5px;
   left: 0;
-  width: 0%;
+  width: 100%;
   height: 1px;
-  background: white;
-  transition: 0.3s;
+  background: rgba(255,255,255,0.7);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 nav a:hover::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 nav a.active {
-  color: #fff;
+  color: rgba(255,255,255,0.95);
 }
 
 nav a.active::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 /* HERO */
 .hero {
-  padding: 150px 50px 80px;
-  font-size: 52px;
+  padding: 180px 50px 120px;
   max-width: 900px;
+}
+
+.hero-title {
+  font-size: 60px;
   font-weight: 700;
+  line-height: 1.05;
+  color: #fff;
+
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-sub {
+  margin-top: 18px;
+  font-size: 16px;
+  max-width: 650px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.25s;
 }
 
 /* SECTION */
 .section {
-  padding: 80px 50px;
+  padding: 100px 50px;
   max-width: 1100px;
 }
 
 .title {
-  font-size: 22px;
-  margin-bottom: 20px;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 15px;
 }
 
-/* CARDS */
-.cards {
+.headline {
+  font-size: 24px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 20px;
+  max-width: 750px;
+  line-height: 1.4;
+}
+
+.text {
+  max-width: 750px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.55);
+}
+
+/* STATUS PANELS */
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
 }
 
 .card {
-  padding: 25px;
-  border: 1px solid rgba(255,255,255,0.08);
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,0.06);
   background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(8px);
+
   position: relative;
   overflow: hidden;
-  transition: 0.4s;
+
+  transition: all 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* EDGE LIGHT */
+/* scan line */
 .card::before {
   content: "";
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 100%;
+  left: -120%;
+  width: 120%;
   height: 1px;
-  background: rgba(255,255,255,0.5);
-  transition: 0.5s;
+  background: rgba(255,255,255,0.45);
+  transition: 0.8s ease;
 }
 
 .card:hover::before {
-  left: 100%;
+  left: 120%;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(255,255,255,0.3);
+  transform: translateY(-10px) scale(1.01);
+  border-color: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
 }
 
 .card h3 {
+  font-size: 15px;
+  color: #fff;
   margin-bottom: 10px;
 }
 
 .card p {
-  color: #aaa;
   font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+}
+
+/* STATUS LABELS */
+.status {
+  margin-top: 15px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: rgba(125,211,252,0.85);
 }
 
 /* FOOTER */
 footer {
-  padding: 40px 50px;
-  color: #777;
+  padding: 60px 50px;
+  font-size: 13px;
+  color: #555;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
 </head>
@@ -177,99 +257,56 @@ footer {
 </header>
 
 <nav>
-  <a href="index.html" class="active">Home</a>
+  <a href="index.html">Home</a>
   <a href="systems.html">Systems</a>
   <a href="projects.html">Projects</a>
   <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="active">Contact</a>
 </nav>
 
 <div class="hero">
-  Engineering Autonomous Systems for the Next Era of Aerospace.
-</div>
-
-<!-- CAPABILITIES -->
-<div class="section">
-  <div class="title">Capabilities</div>
-  <div class="cards">
-    <div class="card">
-      <h3>Autonomous Platforms</h3>
-      <p>AI-driven systems for adaptive missions.</p>
-    </div>
-    <div class="card">
-      <h3>Aerospace Systems</h3>
-      <p>Advanced aircraft and propulsion design.</p>
-    </div>
-    <div class="card">
-      <h3>Defense Integration</h3>
-      <p>Mission-ready high-performance systems.</p>
-    </div>
+  <div class="hero-title">
+    Communication Systems
+  </div>
+  <div class="hero-sub">
+    External communication channels are currently under restricted development within secure engineering environments.
   </div>
 </div>
 
-<!-- PROGRAMS -->
 <div class="section">
-  <div class="title">Programs</div>
-  <div class="cards">
-    <div class="card">
-      <h3>Next-Gen UAV</h3>
-      <p>Long-endurance autonomous aircraft.</p>
-    </div>
-    <div class="card">
-      <h3>AI Command Systems</h3>
-      <p>Real-time mission intelligence platforms.</p>
-    </div>
-    <div class="card">
-      <h3>Propulsion Research</h3>
-      <p>Future-focused propulsion technologies.</p>
-    </div>
+  <div class="title">ACCESS STATUS</div>
+  <div class="headline">
+    Public communication channels are not yet active.
   </div>
-</div>
-
-<!-- OPERATIONAL -->
-<div class="section">
-  <div class="title">Operational Focus</div>
-  <div class="cards">
-    <div class="card">
-      <h3>Autonomous Decision Making</h3>
-      <p>Real-time adaptive mission execution.</p>
-    </div>
-    <div class="card">
-      <h3>Mission Scalability</h3>
-      <p>Systems deployable across environments.</p>
-    </div>
-    <div class="card">
-      <h3>Precision Engineering</h3>
-      <p>Optimized for performance and reliability.</p>
-    </div>
+  <div class="text">
+    Hex Industries is currently operating in a closed development phase. External communication interfaces will be enabled after initial system validation and security architecture finalization.
   </div>
-</div>
 
-<!-- TECHNOLOGY -->
-<div class="section">
-  <div class="title">Technology Focus</div>
-  <div class="cards">
+  <div class="grid">
+
     <div class="card">
-      <h3>Artificial Intelligence</h3>
-      <p>Autonomous decision systems.</p>
+      <h3>Public Contact Interface</h3>
+      <p>Not available during early-stage development cycle.</p>
+      <div class="status">RESTRICTED</div>
     </div>
+
     <div class="card">
-      <h3>Flight Systems</h3>
-      <p>Advanced aerodynamics and control.</p>
+      <h3>Secure Messaging Network</h3>
+      <p>Internal-only communication channel for engineering teams.</p>
+      <div class="status">CLASSIFIED</div>
     </div>
+
     <div class="card">
-      <h3>Simulation</h3>
-      <p>High-fidelity modeling environments.</p>
+      <h3>External Inquiry System</h3>
+      <p>Planned for future deployment after platform stabilization.</p>
+      <div class="status">PENDING RELEASE</div>
     </div>
-    <div class="card">
-      <h3>Systems Engineering</h3>
-      <p>Integrated mission architectures.</p>
-    </div>
+
   </div>
 </div>
 
 <footer>
-  © 2026 Hex Industries
+  © 2026 Hex Industries — Communication Division
 </footer>
 
 </body>
