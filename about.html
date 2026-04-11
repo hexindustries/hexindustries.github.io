@@ -4,43 +4,45 @@
 <meta charset="UTF-8">
 <title>About | Hex Industries</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: 'Inter', sans-serif;
-  background: black;
-  color: #e5e5e5;
+  background: #000;
+  color: rgba(255,255,255,0.75);
   overflow-x: hidden;
 }
 
-/* VIDEO */
-#bg-video {
+/* 🎥 VIDEO BACKGROUND */
+video {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1;
-  opacity: 0.2;
+  z-index: -2;
+  opacity: 0.32;
+  transform: scale(1.05);
 }
 
-/* OVERLAY */
+/* 🌑 OVERLAY */
 body::before {
   content: "";
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
-  z-index: 0;
-}
-
-/* CONTENT LAYER */
-header, nav, .hero, .section, footer {
-  position: relative;
-  z-index: 1;
+  background: radial-gradient(circle at top, rgba(0,0,0,0.35), rgba(0,0,0,0.9));
+  z-index: -1;
 }
 
 /* HEADER */
@@ -51,6 +53,8 @@ header {
 .logo {
   font-size: 18px;
   letter-spacing: 2px;
+  color: #fff;
+  font-weight: 500;
 }
 
 .tagline {
@@ -64,71 +68,99 @@ nav {
 }
 
 nav a {
-  position: relative;
-  color: #888;
-  margin-right: 30px;
+  color: rgba(255,255,255,0.6);
+  margin-right: 25px;
   text-decoration: none;
-  font-size: 13px;
-  letter-spacing: 1px;
-  transition: color 0.4s ease;
+  font-size: 14px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 nav a:hover {
-  color: #fff;
+  color: rgba(255,255,255,0.95);
+  transform: translateY(-1px);
 }
 
 nav a::after {
   content: "";
   position: absolute;
-  left: 0;
   bottom: -5px;
-  width: 0%;
+  left: 0;
+  width: 100%;
   height: 1px;
-  background: #fff;
-  transition: width 0.4s ease;
+  background: rgba(255,255,255,0.7);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 nav a:hover::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 nav a.active {
-  color: #fff;
+  color: rgba(255,255,255,0.95);
 }
 
 nav a.active::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 /* HERO */
 .hero {
-  padding: 140px 50px 80px;
-  font-size: 52px;
-  font-weight: 700;
+  padding: 180px 50px 120px;
   max-width: 900px;
-  line-height: 1.1;
-  animation: fadeUp 1s ease forwards;
-  opacity: 0;
 }
 
-/* SECTIONS */
+.hero-title {
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.05;
+  color: #fff;
+
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-sub {
+  margin-top: 18px;
+  font-size: 16px;
+  max-width: 650px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.25s;
+}
+
+/* SECTION */
 .section {
-  padding: 80px 50px;
+  padding: 100px 50px;
   max-width: 1100px;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-.section.show {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .title {
-  font-size: 22px;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.45);
   margin-bottom: 15px;
-  color: #fff;
+}
+
+.headline {
+  font-size: 24px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 25px;
+  max-width: 750px;
+  line-height: 1.4;
+}
+
+.text {
+  max-width: 750px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.55);
 }
 
 /* CARDS */
@@ -136,59 +168,60 @@ nav a.active::after {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 30px;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 .card {
-  padding: 30px;
+  padding: 28px;
   border: 1px solid rgba(255,255,255,0.06);
-  background: rgba(255,255,255,0.015);
-  backdrop-filter: blur(6px);
-  transition: all 0.5s ease;
-  cursor: pointer;
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(8px);
+
+  transition: all 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
 }
 
-/* subtle glow line */
 .card::before {
   content: "";
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 100%;
+  left: -120%;
+  width: 120%;
   height: 1px;
-  background: rgba(255,255,255,0.3);
-  transition: 0.6s;
+  background: rgba(255,255,255,0.45);
+  transition: 0.8s ease;
 }
 
 .card:hover::before {
-  left: 100%;
+  left: 120%;
 }
 
-/* hover effect */
 .card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(255,255,255,0.2);
+  transform: translateY(-10px) scale(1.01);
+  border-color: rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.04);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
 }
 
-/* text */
 .card h3 {
+  font-size: 15px;
+  color: #fff;
   margin-bottom: 10px;
-  font-size: 18px;
 }
 
 .card p {
   font-size: 14px;
-  color: #aaa;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
 }
 
 /* FOOTER */
 footer {
-  padding: 50px;
+  padding: 60px 50px;
   font-size: 13px;
-  color: #666;
+  color: #555;
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 
 /* ANIMATION */
@@ -203,7 +236,8 @@ footer {
 
 <body>
 
-<video autoplay muted loop playsinline id="bg-video">
+<!-- VIDEO -->
+<video autoplay muted loop playsinline>
   <source src="1.mp4" type="video/mp4">
 </video>
 
@@ -217,64 +251,62 @@ footer {
   <a href="systems.html">Systems</a>
   <a href="projects.html">Projects</a>
   <a href="about.html" class="active">About</a>
+  <a href="contact.html">Contact</a>
 </nav>
 
 <div class="hero">
-  Defining the future of aerospace and autonomous systems.
+  <div class="hero-title">
+    Engineering the Future of Autonomous Aerospace Systems
+  </div>
+  <div class="hero-sub">
+    Hex Industries is an advanced engineering organization focused on developing integrated aerospace, autonomous, and mission-critical systems for next-generation operational environments.
+  </div>
 </div>
 
 <div class="section">
-  <div class="title">Mission</div>
-  <p>
-    Hex Industries develops advanced aerospace platforms and intelligent autonomous systems designed for next-generation operational environments.
-  </p>
+  <div class="title">WHO WE ARE</div>
+  <div class="headline">
+    A systems engineering organization building scalable autonomous platforms for air, space, and high-complexity environments.
+  </div>
+  <div class="text">
+    We design modular architectures that unify autonomy, propulsion, sensing, and mission control into cohesive operational systems. Our focus is long-term technological evolution, not short-term product cycles.
+  </div>
 </div>
 
 <div class="section">
-  <div class="title">Vision</div>
-  <p>
-    To lead innovation at the intersection of engineering, intelligence, and precision, shaping the future of aerospace and defense technologies.
-  </p>
-</div>
-
-<div class="section">
-  <div class="title">Core Areas</div>
+  <div class="title">ENGINEERING PHILOSOPHY</div>
+  <div class="text">
+    Hex Industries operates on a layered systems approach. Every platform is designed with modular independence, allowing each subsystem to evolve without disrupting overall architecture integrity.
+  </div>
 
   <div class="cards">
     <div class="card">
-      <h3>Autonomous Systems</h3>
-      <p>AI-driven platforms and intelligent control systems.</p>
+      <h3>Modularity First</h3>
+      <p>Every system is designed as an independent but interoperable unit.</p>
     </div>
 
     <div class="card">
-      <h3>Aerospace Engineering</h3>
-      <p>Next-generation aerial vehicle design and simulation.</p>
+      <h3>Autonomy Driven</h3>
+      <p>Systems are engineered to operate with minimal external input.</p>
     </div>
 
     <div class="card">
-      <h3>Defense Technologies</h3>
-      <p>Mission-ready systems built for precision and performance.</p>
+      <h3>Scalable Architecture</h3>
+      <p>Designed to evolve across missions, environments, and complexity levels.</p>
     </div>
   </div>
 </div>
 
+<div class="section">
+  <div class="title">GLOBAL VISION</div>
+  <div class="text">
+    Our long-term objective is to develop fully autonomous aerospace systems capable of operating across multiple domains with coordinated intelligence and adaptive mission control.
+  </div>
+</div>
+
 <footer>
-  © 2026 Hex Industries
+  © 2026 Hex Industries — About Division
 </footer>
-
-<script>
-const sections = document.querySelectorAll('.section');
-
-window.addEventListener('scroll', () => {
-  const trigger = window.innerHeight * 0.85;
-
-  sections.forEach(sec => {
-    if (sec.getBoundingClientRect().top < trigger) {
-      sec.classList.add('show');
-    }
-  });
-});
-</script>
 
 </body>
 </html>
