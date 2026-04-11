@@ -20,35 +20,37 @@ body {
   overflow-x: hidden;
 }
 
-/* =========================
-   VIDEO FIX (IMPORTANT CHANGE)
-========================= */
+/* 🎥 VIDEO BACKGROUND (FIXED ONLY) */
 .video-wrap {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
-  overflow: hidden;
 }
 
 .video-wrap video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0.32;
   transform: scale(1.05);
 }
 
-/* =========================
-   OVERLAY (SAFE LAYERING)
-========================= */
+/* 🌑 OVERLAY (FIXED LAYER ORDER) */
 body::before {
   content: "";
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: radial-gradient(circle at top, rgba(0,0,0,0.35), rgba(0,0,0,0.9));
   z-index: 1;
 }
 
-/* EVERYTHING ABOVE VIDEO */
+/* MAKE CONTENT ABOVE VIDEO */
 header, nav, .hero, .section, footer {
   position: relative;
   z-index: 2;
@@ -128,7 +130,7 @@ nav a.active::after {
   color: #fff;
   opacity: 0;
   transform: translateY(25px);
-  animation: fadeUp 1.2s ease forwards;
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero-sub {
@@ -139,7 +141,7 @@ nav a.active::after {
   line-height: 1.6;
   opacity: 0;
   transform: translateY(25px);
-  animation: fadeUp 1.2s ease forwards;
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   animation-delay: 0.25s;
 }
 
@@ -227,7 +229,7 @@ footer {
 
 <body>
 
-<!-- ✅ VIDEO (FIXED STRUCTURE) -->
+<!-- 🎥 VIDEO (ONLY FIX IS HERE) -->
 <div class="video-wrap">
   <video autoplay muted loop playsinline>
     <source src="1.mp4" type="video/mp4">
