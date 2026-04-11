@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Hex Industries</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -17,7 +17,7 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background: #000;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.78);
   overflow-x: hidden;
 }
 
@@ -34,7 +34,7 @@ video {
   transform: scale(1.05);
 }
 
-/* 🌑 OVERLAY (FIXED layering issue) */
+/* 🌑 OVERLAY (FIXED for clarity) */
 body::before {
   content: "";
   position: fixed;
@@ -42,61 +42,51 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at top, rgba(0,0,0,0.4), rgba(0,0,0,0.92));
-  z-index: -1;
-}
-
-/* subtle grain (VERY aerospace UI feel) */
-body::after {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.05;
-  pointer-events: none;
+  background: radial-gradient(circle at top, rgba(0,0,0,0.35), rgba(0,0,0,0.88));
   z-index: -1;
 }
 
 /* HEADER */
 header {
   padding: 25px 50px;
+  position: relative;
+  z-index: 2;
 }
 
 .logo {
   font-size: 18px;
   letter-spacing: 2px;
-  color: #ffffff;
+  color: #fff;
   font-weight: 500;
 }
 
 .tagline {
   font-size: 12px;
   color: #777;
-  margin-top: 4px;
 }
 
 /* NAV */
 nav {
   padding: 10px 50px;
+  position: relative;
+  z-index: 2;
 }
 
 nav a {
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.6);
   margin-right: 25px;
   text-decoration: none;
   font-size: 14px;
   position: relative;
-  transition: all 0.35s ease;
+
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* smoother hover = "HUD feel" */
 nav a:hover {
   color: rgba(255,255,255,0.95);
   transform: translateY(-1px);
 }
 
-/* scanning underline (more premium than simple line) */
 nav a::after {
   content: "";
   position: absolute;
@@ -105,9 +95,10 @@ nav a::after {
   width: 100%;
   height: 1px;
   background: rgba(255,255,255,0.7);
+
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.35s ease;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 nav a:hover::after {
@@ -126,6 +117,8 @@ nav a.active::after {
 .hero {
   padding: 200px 50px 140px;
   max-width: 900px;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-main {
@@ -133,33 +126,35 @@ nav a.active::after {
   font-weight: 700;
   line-height: 1.05;
   color: rgba(255,255,255,0.92);
-  margin-bottom: 25px;
 
   opacity: 0;
-  transform: translateY(25px);
-  animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform: translateY(20px);
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero-sub {
+  margin-top: 20px;
   font-size: 16px;
   max-width: 600px;
   color: rgba(255,255,255,0.55);
   line-height: 1.6;
 
   opacity: 0;
-  transform: translateY(25px);
-  animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform: translateY(20px);
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   animation-delay: 0.25s;
 }
 
-/* SECTIONS */
+/* SECTION */
 .section {
   padding: 110px 50px;
   max-width: 1100px;
+  position: relative;
+  z-index: 2;
 
   opacity: 0;
   transform: translateY(40px);
-  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .section.show {
@@ -169,7 +164,6 @@ nav a.active::after {
 
 .title {
   font-size: 20px;
-  letter-spacing: 1px;
   margin-bottom: 25px;
   color: rgba(255,255,255,0.85);
 }
@@ -180,26 +174,29 @@ nav a.active::after {
   color: rgba(255,255,255,0.55);
 }
 
-/* CARDS GRID */
+/* 🧠 CARDS (FIXED CLARITY ISSUE) */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 30px;
 }
 
-/* 🧠 NORTHROP-STYLE CARD */
 .card {
   padding: 28px;
-  border: 1px solid rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.06);
   background: rgba(255,255,255,0.02);
-  backdrop-filter: blur(10px);
-  transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  backdrop-filter: blur(8px);
+
   position: relative;
   overflow: hidden;
-  will-change: transform;
+
+  transition: all 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* IMPORTANT: prevents blur/opacity drop feeling */
+  will-change: transform, background, box-shadow;
 }
 
-/* top scan line */
+/* scan line */
 .card::before {
   content: "";
   position: absolute;
@@ -207,25 +204,30 @@ nav a.active::after {
   left: -120%;
   width: 120%;
   height: 1px;
-  background: rgba(255,255,255,0.5);
-  transition: 0.7s ease;
+  background: rgba(255,255,255,0.45);
+  transition: 0.8s ease;
 }
 
 .card:hover::before {
   left: 120%;
 }
 
-/* hover = lift + glow + depth */
+/* 🔥 FIXED HOVER (NO CLARITY LOSS) */
 .card:hover {
   transform: translateY(-10px) scale(1.01);
-  border-color: rgba(255,255,255,0.22);
-  background: rgba(255,255,255,0.05);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.55);
+
+  /* KEEP TEXT CRISP */
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.18);
+
+  /* controlled glow */
+  box-shadow: 0 25px 60px rgba(0,0,0,0.55);
 }
 
+/* text stays stable (no fade issues) */
 .card h3 {
   margin-bottom: 10px;
-  color: rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.92);
 }
 
 .card p {
@@ -239,6 +241,8 @@ footer {
   padding: 50px;
   font-size: 13px;
   color: #666;
+  position: relative;
+  z-index: 2;
 }
 
 /* ANIMATION */
@@ -248,20 +252,12 @@ footer {
     transform: translateY(0);
   }
 }
-
-/* reduce motion safety */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
-}
 </style>
 </head>
 
 <body>
 
-<!-- VIDEO BACKGROUND -->
+<!-- VIDEO -->
 <video autoplay muted loop playsinline>
   <source src="1.mp4" type="video/mp4">
 </video>
@@ -284,48 +280,34 @@ footer {
     Autonomous Systems for the Future of Aerospace.
   </div>
   <div class="hero-sub">
-    Engineering intelligent platforms designed for next-generation missions.
+    Engineering intelligent platforms designed for next-generation aerospace and autonomous operations.
   </div>
 </div>
 
 <div class="section">
+  <div class="title">Overview</div>
   <div class="text">
-    Hex Industries develops advanced aerospace and autonomous systems engineered for next-generation missions.
+    Hex Industries develops advanced aerospace and autonomous systems engineered for high-performance mission environments.
   </div>
 </div>
 
 <div class="section">
   <div class="title">Capabilities</div>
+
   <div class="cards">
     <div class="card">
       <h3>Autonomous Platforms</h3>
-      <p>Adaptive systems capable of real-time decision making.</p>
+      <p>Self-operating systems capable of real-time adaptive decision-making.</p>
     </div>
+
     <div class="card">
       <h3>Aerospace Engineering</h3>
-      <p>Next-generation aircraft and propulsion design.</p>
+      <p>High-efficiency air and space systems designed for extreme environments.</p>
     </div>
+
     <div class="card">
       <h3>Defense Systems</h3>
-      <p>High-performance solutions built for mission readiness.</p>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <div class="title">Programs</div>
-  <div class="cards">
-    <div class="card">
-      <h3>Next-Gen UAV</h3>
-      <p>Autonomous aerial systems for strategic operations.</p>
-    </div>
-    <div class="card">
-      <h3>AI Command</h3>
-      <p>Real-time mission intelligence platforms.</p>
-    </div>
-    <div class="card">
-      <h3>Advanced Propulsion</h3>
-      <p>Future-focused propulsion technologies.</p>
+      <p>Mission-ready technologies built for strategic and tactical superiority.</p>
     </div>
   </div>
 </div>
