@@ -8,49 +8,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* ================= RESET ================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-/* ================= BODY (SMOOTH ENTRY) ================= */
 body {
   font-family: 'Inter', sans-serif;
   background: #05070d;
   color: white;
   overflow-x: hidden;
-
-  opacity: 0;
-  transform: scale(1.015);
-  animation: pageFlow 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* ================= PAGE LOAD ANIMATION ================= */
-@keyframes pageFlow {
-  0% {
-    opacity: 0;
-    transform: scale(1.02) translateY(12px);
-    filter: blur(10px);
-  }
-  50% {
-    opacity: 0.6;
-    filter: blur(2px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    filter: blur(0);
-  }
-}
-
-/* ================= VIDEO BACKGROUND ================= */
+/* VIDEO */
 .video-bg {
   position: fixed;
   top: 0;
@@ -59,18 +30,9 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: -2;
-  filter: brightness(0.28) contrast(1.2);
-
-  transform: scale(1.08);
-  animation: slowDrift 14s ease-in-out infinite alternate;
+  filter: brightness(0.25) contrast(1.2);
 }
 
-@keyframes slowDrift {
-  from { transform: scale(1.08) translateY(0px); }
-  to { transform: scale(1.12) translateY(-10px); }
-}
-
-/* ================= OVERLAY ================= */
 .overlay {
   position: fixed;
   inset: 0;
@@ -79,7 +41,7 @@ body {
   z-index: -1;
 }
 
-/* ================= NAV ================= */
+/* NAV */
 .nav {
   position: fixed;
   top: 0;
@@ -89,7 +51,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   background: rgba(0,0,0,0.35);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -112,64 +73,51 @@ body {
   text-decoration: none;
   color: rgba(255,255,255,0.7);
   letter-spacing: 1px;
-  transition: all 0.4s ease;
+  transition: 0.3s;
 }
 
 .nav-links a:hover {
   color: white;
 }
 
-.nav-links a.active {
-  color: white;
-}
-
-.nav-links a.active::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: rgba(0,170,255,0.8);
-  margin-top: 4px;
-}
-
-/* ================= HEADER ================= */
+/* HEADER */
 .header {
   padding: 140px 80px 40px;
 }
 
 .header h1 {
-  font-size: 44px;
+  font-size: 46px;
   letter-spacing: 2px;
 }
 
 .header p {
-  margin-top: 15px;
-  max-width: 750px;
+  margin-top: 18px;
+  max-width: 700px;
   font-size: 14px;
   color: rgba(255,255,255,0.65);
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
-/* ================= MISSION ================= */
+/* MISSION BLOCK */
 .mission {
-  padding: 40px 80px;
+  padding: 60px 80px;
   max-width: 900px;
 }
 
 .mission h2 {
-  font-size: 14px;
+  font-size: 18px;
   letter-spacing: 2px;
+  margin-bottom: 20px;
   color: rgba(0,170,255,0.8);
-  margin-bottom: 15px;
 }
 
 .mission p {
   font-size: 14px;
-  line-height: 1.8;
+  line-height: 1.9;
   color: rgba(255,255,255,0.65);
 }
 
-/* ================= GRID ================= */
+/* CORE VALUES */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -177,13 +125,18 @@ body {
   padding: 60px 80px 100px;
 }
 
-/* ================= CARDS (NO HOVER EFFECTS) ================= */
 .card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
   padding: 25px;
   border-radius: 12px;
   backdrop-filter: blur(10px);
+  transition: 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,170,255,0.4);
 }
 
 .card h3 {
@@ -198,7 +151,7 @@ body {
   line-height: 1.6;
 }
 
-/* ================= FOOTER ================= */
+/* FOOTER */
 footer {
   padding: 60px;
   text-align: center;
@@ -206,28 +159,12 @@ footer {
   color: rgba(255,255,255,0.5);
 }
 
-/* ================= RESPONSIVE ================= */
+/* RESPONSIVE */
 @media (max-width: 900px) {
-  .grid {
-    grid-template-columns: 1fr;
-    padding: 30px;
-  }
-
-  .header, .mission {
-    padding: 110px 25px 30px;
-  }
-
-  .nav {
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 15px 20px;
-  }
-
-  .header h1 {
-    font-size: 32px;
-  }
+  .grid { grid-template-columns: 1fr; }
+  .header, .mission, .grid { padding: 30px; }
+  .nav { padding: 15px 20px; flex-wrap: wrap; }
 }
-
 </style>
 </head>
 
@@ -248,7 +185,7 @@ footer {
     <a href="index.html">Home</a>
     <a href="systems.html">Systems</a>
     <a href="projects.html">Projects</a>
-    <a href="about.html" class="active">About</a>
+    <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </div>
 </nav>
@@ -257,7 +194,7 @@ footer {
 <section class="header">
   <h1>ABOUT HEX INDUSTRIES</h1>
   <p>
-    Hex Industries is an advanced aerospace and autonomous systems initiative focused on developing next-generation intelligent systems, autonomous control frameworks, and scalable aerospace architectures.
+    Hex Industries is an advanced aerospace and autonomous systems initiative focused on developing next-generation technologies for aerial intelligence, defense architecture, and intelligent flight systems.
   </p>
 </section>
 
@@ -265,26 +202,28 @@ footer {
 <section class="mission">
   <h2>MISSION</h2>
   <p>
-    To engineer intelligent aerospace systems capable of autonomous decision-making, adaptive control, and scalable mission execution across complex environments.
+    To engineer highly autonomous, intelligent aerospace systems capable of adapting to complex environments while maintaining precision, reliability, and operational efficiency.  
+    <br><br>
+    We focus on long-term technological evolution in aerospace systems, distributed intelligence, and modular defense-grade architectures.
   </p>
 </section>
 
-<!-- VALUES -->
+<!-- CORE VALUES -->
 <section class="grid">
 
   <div class="card">
     <h3>PRECISION</h3>
-    <p>Engineering accuracy and controlled system behavior at every level.</p>
+    <p>Every system is designed with engineering accuracy and controlled performance behavior.</p>
   </div>
 
   <div class="card">
     <h3>AUTONOMY</h3>
-    <p>Independent systems capable of adaptive decision-making.</p>
+    <p>We build systems capable of independent decision-making and adaptive control.</p>
   </div>
 
   <div class="card">
     <h3>SCALABILITY</h3>
-    <p>Designed to expand into large interconnected aerospace networks.</p>
+    <p>All architectures are designed to expand into larger integrated networks.</p>
   </div>
 
 </section>
