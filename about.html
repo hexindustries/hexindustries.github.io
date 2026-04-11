@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About | Hex Industries</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
   box-sizing: border-box;
 }
 
-/* PAGE TRANSITION BASE */
+/* BODY TRANSITION */
 body {
   font-family: 'Inter', sans-serif;
   background: #05070d;
@@ -24,15 +24,18 @@ body {
   overflow-x: hidden;
 
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
 }
 
 body.loaded {
   opacity: 1;
+  transform: translateY(0);
 }
 
 body.fade-out {
   opacity: 0;
+  transform: translateY(-20px);
 }
 
 /* VIDEO */
@@ -44,10 +47,10 @@ body.fade-out {
   height: 100%;
   object-fit: cover;
   z-index: -2;
-  filter: brightness(0.35) contrast(1.15);
+  filter: brightness(0.35);
 }
 
-/* OVERLAY (MATCHED STYLE) */
+/* OVERLAY */
 .overlay {
   position: fixed;
   inset: 0;
@@ -65,17 +68,9 @@ body.fade-out {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   background: rgba(0,0,0,0.35);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
   z-index: 999;
-}
-
-.logo {
-  font-size: 13px;
-  letter-spacing: 2px;
-  font-weight: 600;
 }
 
 .nav-links {
@@ -84,14 +79,9 @@ body.fade-out {
 }
 
 .nav-links a {
-  font-size: 12px;
-  text-decoration: none;
   color: rgba(255,255,255,0.7);
-  transition: 0.3s;
-}
-
-.nav-links a:hover {
-  color: white;
+  text-decoration: none;
+  font-size: 12px;
 }
 
 /* HEADER */
@@ -101,92 +91,95 @@ body.fade-out {
 
 .header h1 {
   font-size: 46px;
-  letter-spacing: 2px;
+
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
 }
 
 .header p {
-  margin-top: 18px;
+  margin-top: 15px;
   max-width: 700px;
   font-size: 14px;
   color: rgba(255,255,255,0.65);
-  line-height: 1.8;
+
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.2s;
 }
 
 /* MISSION */
 .mission {
-  padding: 60px 80px;
-  max-width: 900px;
+  padding: 40px 80px;
 }
 
 .mission h2 {
   font-size: 18px;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   color: rgba(0,170,255,0.8);
+
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.3s;
 }
 
 .mission p {
+  max-width: 800px;
   font-size: 14px;
-  line-height: 1.9;
   color: rgba(255,255,255,0.65);
+
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.4s;
 }
 
 /* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3,1fr);
   gap: 25px;
-  padding: 60px 80px 100px;
+  padding: 60px 80px;
 }
 
-/* CARDS (SMOOTH HOVER) */
+/* CARDS */
 .card {
   background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
   padding: 25px;
-  border-radius: 12px;
+  border-radius: 10px;
 
-  transition: transform 0.4s ease, border 0.4s ease;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
 }
+
+.card:nth-child(1) { animation-delay: 0.5s; }
+.card:nth-child(2) { animation-delay: 0.6s; }
+.card:nth-child(3) { animation-delay: 0.7s; }
 
 .card:hover {
   transform: translateY(-6px);
-  border-color: rgba(0,170,255,0.4);
 }
 
-.card h3 {
-  font-size: 13px;
-  margin-bottom: 10px;
-}
-
-.card p {
-  font-size: 13px;
-  color: rgba(255,255,255,0.6);
-}
-
-/* FOOTER */
 footer {
   padding: 60px;
   text-align: center;
   font-size: 12px;
-  color: rgba(255,255,255,0.5);
+}
+
+/* FADE UP */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* MOBILE */
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: 1fr;
-    padding: 30px;
-  }
-
-  .header, .mission {
-    padding: 110px 25px 30px;
-  }
-
-  .nav {
-    padding: 15px 20px;
-    flex-wrap: wrap;
-  }
+@media(max-width:900px){
+  .grid { grid-template-columns:1fr; padding:30px; }
+  .header, .mission { padding:120px 25px 30px; }
 }
 
 </style>
@@ -194,17 +187,14 @@ footer {
 
 <body>
 
-<!-- VIDEO -->
 <video class="video-bg" autoplay muted loop playsinline>
   <source src="1.mp4" type="video/mp4">
 </video>
 
 <div class="overlay"></div>
 
-<!-- NAV -->
 <nav class="nav">
-  <div class="logo">HEX INDUSTRIES</div>
-
+  <div>HEX INDUSTRIES</div>
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="systems.html">Systems</a>
@@ -214,46 +204,27 @@ footer {
   </div>
 </nav>
 
-<!-- HEADER -->
 <section class="header">
   <h1>ABOUT HEX INDUSTRIES</h1>
-  <p>
-    Hex Industries is an advanced aerospace and autonomous systems initiative focused on developing next-generation technologies for aerial intelligence, defense architecture, and intelligent flight systems.
-  </p>
+  <p>Advanced aerospace systems and autonomous technologies.</p>
 </section>
 
-<!-- MISSION -->
 <section class="mission">
   <h2>MISSION</h2>
-  <p>
-    To engineer highly autonomous, intelligent aerospace systems capable of adapting to complex environments while maintaining precision, reliability, and operational efficiency.
-  </p>
+  <p>To engineer intelligent aerospace systems with precision and adaptability.</p>
 </section>
 
-<!-- VALUES -->
 <section class="grid">
-  <div class="card">
-    <h3>PRECISION</h3>
-    <p>Engineering accuracy and controlled performance behavior.</p>
-  </div>
-
-  <div class="card">
-    <h3>AUTONOMY</h3>
-    <p>Independent decision-making systems.</p>
-  </div>
-
-  <div class="card">
-    <h3>SCALABILITY</h3>
-    <p>Expandable into large aerospace networks.</p>
-  </div>
+  <div class="card">PRECISION</div>
+  <div class="card">AUTONOMY</div>
+  <div class="card">SCALABILITY</div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  © 2026 Hex Industries — Mission Division
+© 2026 Hex Industries
 </footer>
 
-<!-- PAGE TRANSITION SCRIPT -->
+<!-- PAGE TRANSITION -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("loaded");
@@ -269,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(() => {
           window.location = url;
-        }, 400);
+        }, 500);
       }
     });
   });
