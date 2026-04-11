@@ -8,10 +8,43 @@
 
 <style>
 body {
+  <video autoplay muted loop playsinline id="bg-video">
+  <source src="your-video.mp4" type="video/mp4">
+</video>
   margin: 0;
   font-family: 'Inter', sans-serif;
   background: #0a0a0a;
   color: #e5e5e5;
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.25; /* keeps text readable */
+}
+
+/* dark overlay for better contrast */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    rgba(0,0,0,0.3),
+    rgba(0,0,0,0.85)
+  );
+  z-index: 0;
+}
+
+/* make sure content stays above video */
+header, .hero, .section, footer {
+  position: relative;
+  z-index: 1;
 }
 
 /* HEADER */
