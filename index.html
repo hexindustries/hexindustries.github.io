@@ -14,14 +14,13 @@
 }
 
 body {
-  margin: 0;
   font-family: 'Inter', sans-serif;
   background: #000;
   color: rgba(255,255,255,0.78);
   overflow-x: hidden;
 }
 
-/* 🎥 VIDEO BACKGROUND */
+/* 🎥 VIDEO */
 video {
   position: fixed;
   top: 0;
@@ -34,7 +33,7 @@ video {
   transform: scale(1.05);
 }
 
-/* 🌑 OVERLAY (FIXED for clarity) */
+/* 🌑 OVERLAY */
 body::before {
   content: "";
   position: fixed;
@@ -78,7 +77,6 @@ nav a {
   text-decoration: none;
   font-size: 14px;
   position: relative;
-
   transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -95,7 +93,6 @@ nav a::after {
   width: 100%;
   height: 1px;
   background: rgba(255,255,255,0.7);
-
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
@@ -174,7 +171,7 @@ nav a.active::after {
   color: rgba(255,255,255,0.55);
 }
 
-/* 🧠 CARDS (FIXED CLARITY ISSUE) */
+/* CARDS */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -187,16 +184,11 @@ nav a.active::after {
   background: rgba(255,255,255,0.02);
   backdrop-filter: blur(8px);
 
+  transition: all 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
-
-  transition: all 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-
-  /* IMPORTANT: prevents blur/opacity drop feeling */
-  will-change: transform, background, box-shadow;
 }
 
-/* scan line */
 .card::before {
   content: "";
   position: absolute;
@@ -212,19 +204,13 @@ nav a.active::after {
   left: 120%;
 }
 
-/* 🔥 FIXED HOVER (NO CLARITY LOSS) */
 .card:hover {
   transform: translateY(-10px) scale(1.01);
-
-  /* KEEP TEXT CRISP */
-  background: rgba(255,255,255,0.04);
   border-color: rgba(255,255,255,0.18);
-
-  /* controlled glow */
+  background: rgba(255,255,255,0.04);
   box-shadow: 0 25px 60px rgba(0,0,0,0.55);
 }
 
-/* text stays stable (no fade issues) */
 .card h3 {
   margin-bottom: 10px;
   color: rgba(255,255,255,0.92);
@@ -257,7 +243,6 @@ footer {
 
 <body>
 
-<!-- VIDEO -->
 <video autoplay muted loop playsinline>
   <source src="1.mp4" type="video/mp4">
 </video>
@@ -277,38 +262,52 @@ footer {
 
 <div class="hero">
   <div class="hero-main">
-    Autonomous Systems for the Future of Aerospace.
+    Autonomous Aerospace Systems for Multi-Domain Operations.
   </div>
   <div class="hero-sub">
-    Engineering intelligent platforms designed for next-generation aerospace and autonomous operations.
+    Hex Industries designs integrated aerospace, autonomous, and mission-critical systems engineered for next-generation operational environments.
   </div>
 </div>
 
 <div class="section">
-  <div class="title">Overview</div>
+  <div class="title">Mission Focus</div>
   <div class="text">
-    Hex Industries develops advanced aerospace and autonomous systems engineered for high-performance mission environments.
+    Developing advanced autonomous systems focused on aerospace innovation, adaptive intelligence, and resilient mission architectures across extreme environments.
   </div>
 </div>
 
 <div class="section">
-  <div class="title">Capabilities</div>
+  <div class="title">Operational Domains</div>
 
   <div class="cards">
     <div class="card">
-      <h3>Autonomous Platforms</h3>
-      <p>Self-operating systems capable of real-time adaptive decision-making.</p>
+      <h3>Aerospace Systems</h3>
+      <p>High-performance flight and orbital engineering platforms for advanced missions.</p>
     </div>
 
     <div class="card">
-      <h3>Aerospace Engineering</h3>
-      <p>High-efficiency air and space systems designed for extreme environments.</p>
+      <h3>Autonomous Intelligence</h3>
+      <p>Self-adaptive systems capable of real-time decision-making in complex environments.</p>
     </div>
 
     <div class="card">
-      <h3>Defense Systems</h3>
-      <p>Mission-ready technologies built for strategic and tactical superiority.</p>
+      <h3>Defense Architecture</h3>
+      <p>Strategic systems designed for operational resilience and mission readiness.</p>
     </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="title">Engineering Philosophy</div>
+  <div class="text">
+    Hex Industries operates on a modular systems approach, prioritizing scalability, autonomy, and integration across all technological layers.
+  </div>
+</div>
+
+<div class="section">
+  <div class="title">Global Readiness</div>
+  <div class="text">
+    Designed for deployment across air, space, and high-risk environments requiring autonomous coordination and precision execution.
   </div>
 </div>
 
