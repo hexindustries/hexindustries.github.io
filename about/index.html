@@ -1,1 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About | Hex Industries</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #000;
+  color: rgba(255,255,255,0.75);
+  overflow-x: hidden;
+}
+
+/* 🎥 VIDEO BACKGROUND (FIXED ONLY) */
+.video-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.video-wrap video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.32;
+  transform: scale(1.05);
+}
+
+/* 🌑 OVERLAY (FIXED LAYER ORDER) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top, rgba(0,0,0,0.35), rgba(0,0,0,0.9));
+  z-index: 1;
+}
+
+/* MAKE CONTENT ABOVE VIDEO */
+header, nav, .hero, .section, footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* HEADER */
+header {
+  padding: 25px 50px;
+}
+
+.logo {
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.tagline {
+  font-size: 12px;
+  color: #777;
+}
+
+/* NAV */
+nav {
+  padding: 10px 50px;
+}
+
+nav a {
+  color: rgba(255,255,255,0.6);
+  margin-right: 25px;
+  text-decoration: none;
+  font-size: 14px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+nav a:hover {
+  color: rgba(255,255,255,0.95);
+  transform: translateY(-1px);
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.7);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+}
+
+nav a.active {
+  color: rgba(255,255,255,0.95);
+}
+
+nav a.active::after {
+  transform: scaleX(1);
+}
+
+/* HERO */
+.hero {
+  padding: 180px 50px 120px;
+  max-width: 900px;
+}
+
+.hero-title {
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.05;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-sub {
+  margin-top: 18px;
+  font-size: 16px;
+  max-width: 650px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.25s;
+}
+
+/* SECTION */
+.section {
+  padding: 100px 50px;
+  max-width: 1100px;
+}
+
+.title {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 15px;
+}
+
+.headline {
+  font-size: 24px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 25px;
+  max-width: 750px;
+  line-height: 1.4;
+}
+
+.text {
+  max-width: 750px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.55);
+}
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card {
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(8px);
+  transition: all 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.01);
+  border-color: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+}
+
+.card h3 {
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+}
+
+/* FOOTER */
+footer {
+  padding: 60px 50px;
+  font-size: 13px;
+  color: #555;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎥 VIDEO (ONLY FIX IS HERE) -->
+<div class="video-wrap">
+  <video autoplay muted loop playsinline>
+    <source src="1.mp4" type="video/mp4">
+  </video>
+</div>
+
+<header>
+  <div class="logo">HEX INDUSTRIES</div>
+  <div class="tagline">Innovating Tomorrow, Today.</div>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="systems.html">Systems</a>
+  <a href="projects.html">Projects</a>
+  <a href="about.html" class="active">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-title">
+    Engineering the Future of Autonomous Aerospace Systems
+  </div>
+  <div class="hero-sub">
+    Hex Industries is an advanced engineering organization focused on developing integrated aerospace, autonomous, and mission-critical systems for next-generation environments.
+  </div>
+</div>
+
+<div class="section">
+  <div class="title">WHO WE ARE</div>
+  <div class="headline">
+    A systems engineering organization building scalable autonomous platforms for air, space, and high-complexity environments.
+  </div>
+  <div class="text">
+    We design modular architectures that unify autonomy, propulsion, sensing, and mission control into cohesive systems.
+  </div>
+</div>
+
+<div class="section">
+  <div class="title">ENGINEERING PHILOSOPHY</div>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Modularity First</h3>
+      <p>Every system is designed as an independent but interoperable unit.</p>
+    </div>
+
+    <div class="card">
+      <h3>Autonomy Driven</h3>
+      <p>Systems operate with minimal external input.</p>
+    </div>
+
+    <div class="card">
+      <h3>Scalable Architecture</h3>
+      <p>Designed to evolve across missions and complexity levels.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="title">GLOBAL VISION</div>
+  <div class="text">
+    Our long-term objective is to build fully autonomous aerospace systems capable of coordinated multi-domain operations.
+  </div>
+</div>
+
+<footer>
+  © 2026 Hex Industries — About Division
+</footer>
+
+</body>
+</html>
