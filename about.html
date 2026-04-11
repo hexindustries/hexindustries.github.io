@@ -10,66 +10,27 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: black;
+  background: #0a0a0a;
   color: #e5e5e5;
-  overflow-x: hidden;
-}
-
-/* VIDEO */
-#bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-  opacity: 0.25;
-}
-
-/* OVERLAY */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.65);
-  z-index: 0;
 }
 
 /* HEADER */
 header {
-  position: relative;
-  z-index: 1;
-  padding: 25px 50px;
-}
-
-.logo {
-  font-size: 18px;
-  letter-spacing: 2px;
-}
-
-.tagline {
-  font-size: 12px;
-  color: #777;
+  padding: 20px 50px;
 }
 
 /* NAV */
 nav {
-  position: relative;
-  z-index: 1;
-  padding: 10px 50px;
+  padding: 0 50px;
+  margin-bottom: 40px;
 }
 
 nav a {
   position: relative;
   color: #aaa;
-  margin-right: 30px;
+  margin-right: 25px;
   text-decoration: none;
   font-size: 14px;
-  letter-spacing: 1px;
   transition: color 0.4s ease;
 }
 
@@ -81,7 +42,7 @@ nav a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -5px;
+  bottom: -4px;
   width: 0%;
   height: 1px;
   background: #fff;
@@ -101,16 +62,14 @@ nav a.active::after {
   width: 100%;
 }
 
-/* CONTENT */
+/* CONTENT (ORIGINAL STYLE) */
 .content {
-  position: relative;
-  z-index: 1;
-  padding: 120px 50px;
-  max-width: 800px;
+  padding: 80px 50px;
+  max-width: 900px;
 }
 
 h1 {
-  font-size: 36px;
+  font-size: 32px;
   margin-bottom: 20px;
 }
 
@@ -118,23 +77,23 @@ p {
   line-height: 1.6;
   color: #ccc;
 }
+
+/* FOOTER */
+footer {
+  padding: 40px 50px;
+  font-size: 14px;
+  color: #777;
+}
 </style>
 </head>
 
 <body>
 
-<!-- VIDEO -->
-<video autoplay muted loop playsinline id="bg-video">
-  <source src="1.mp4" type="video/mp4">
-</video>
-
-<!-- HEADER -->
 <header>
-  <div class="logo">HEX INDUSTRIES</div>
-  <div class="tagline">Innovating Tomorrow, Today.</div>
+  <div>HEX INDUSTRIES</div>
+  <div style="font-size:12px; color:#777;">Innovating Tomorrow, Today.</div>
 </header>
 
-<!-- NAV -->
 <nav>
   <a href="index.html">Home</a>
   <a href="systems.html">Systems</a>
@@ -142,7 +101,6 @@ p {
   <a href="about.html" class="active">About</a>
 </nav>
 
-<!-- CONTENT -->
 <div class="content">
   <h1>About</h1>
   <p>
@@ -152,6 +110,10 @@ p {
     Our mission is to innovate at the intersection of engineering, intelligence, and precision, delivering systems designed for future operational environments.
   </p>
 </div>
+
+<footer>
+  © 2026 Hex Industries
+</footer>
 
 </body>
 </html>
