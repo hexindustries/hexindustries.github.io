@@ -1,158 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Hex Industries</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
+/* ================= GLOBAL ================= */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: 'Inter', sans-serif;
-  background: #0a0a0a;
-  color: #e5e5e5;
+  background: #05070d;
+  color: white;
   overflow-x: hidden;
 }
 
-/* BACKGROUND VIDEO */
-#bg-video {
+/* ================= VIDEO BACKGROUND ================= */
+.video-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1;
-  opacity: 0.25;
+  z-index: -2;
+  filter: brightness(0.35) contrast(1.1);
 }
 
-/* DARK OVERLAY */
-body::before {
-  content: "";
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(0,140,255,0.08), transparent 60%),
+              linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.95));
+  z-index: -1;
+}
+
+/* ================= NAVBAR ================= */
+.nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.65);
-  z-index: 0;
+  padding: 18px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  z-index: 999;
 }
 
-/* CONTENT ABOVE VIDEO */
-header, .hero, .section, footer {
-  position: relative;
-  z-index: 1;
+.logo {
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 600;
 }
 
-/* HEADER */
-header {
-  padding: 20px 50px;
-  font-size: 18px;
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  font-size: 12px;
+  text-decoration: none;
+  color: rgba(255,255,255,0.7);
   letter-spacing: 1px;
+  transition: 0.3s;
 }
 
-/* HERO */
+.nav-links a:hover {
+  color: white;
+}
+
+.search-box input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 7px 12px;
+  border-radius: 6px;
+  color: white;
+  font-size: 12px;
+  outline: none;
+}
+
+.search-box input::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+
+/* ================= HERO ================= */
 .hero {
-  padding: 120px 50px;
-  font-size: 48px;
-  font-weight: 700;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 80px;
+}
+
+.hero h1 {
+  font-size: 58px;
+  font-weight: 600;
   max-width: 900px;
+  line-height: 1.1;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeUp 1.2s ease forwards;
 }
 
-/* SECTIONS */
-.section {
-  padding: 80px 50px;
+.hero p {
+  margin-top: 20px;
+  max-width: 600px;
+  color: rgba(255,255,255,0.7);
+  font-size: 15px;
   opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
+  animation: fadeUp 1.2s ease 0.3s forwards;
 }
 
-.section.show {
-  opacity: 1;
-  transform: translateY(0);
+.tagline {
+  margin-top: 25px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: rgba(0,170,255,0.8);
+  opacity: 0;
+  animation: fadeUp 1.2s ease 0.5s forwards;
 }
 
-.title {
-  font-size: 26px;
-  margin-bottom: 20px;
+/* ================= SECTIONS ================= */
+.section {
+  padding: 120px 80px;
 }
 
-/* FOOTER */
+.section h2 {
+  font-size: 22px;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+/* ================= GRID ================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 25px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: 0.4s ease;
+  cursor: pointer;
+
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease forwards;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0,170,255,0.4);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.card h3 {
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+}
+
+/* ================= FOOTER ================= */
 footer {
-  padding: 40px 50px;
-  font-size: 14px;
-  color: #777;
+  padding: 60px 80px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
 }
 
-/* ANIMATION */
+/* ================= ANIMATION ================= */
 @keyframes fadeUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .hero h1 { font-size: 36px; }
+  .grid { grid-template-columns: 1fr; }
+  .nav { padding: 15px 20px; flex-wrap: wrap; gap: 10px; }
+  .hero, .section { padding: 60px 25px; }
+}
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND VIDEO -->
-<video autoplay muted loop playsinline id="bg-video">
+<!-- VIDEO -->
+<video class="video-bg" autoplay muted loop>
   <source src="1.mp4" type="video/mp4">
 </video>
 
-<header>HEX INDUSTRIES</header>
+<div class="overlay"></div>
 
-<div class="hero">
-  Engineering the future of aerospace and autonomous systems.
-</div>
+<!-- NAVBAR -->
+<nav class="nav">
+  <div class="logo">HEX INDUSTRIES</div>
 
-<div class="section">
-  <div class="title">What We Do</div>
-  <p>We design advanced aerospace platforms, autonomous systems, and defense technologies for next-generation missions.</p>
-</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="systems.html">Systems</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
 
-<div class="section">
-  <div class="title">Systems</div>
+  <div class="search-box">
+    <input type="text" placeholder="Search systems...">
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Engineering autonomous aerospace systems for the next generation.</h1>
   <p>
-    <a href="systems.html" style="color:#aaa;">Explore Systems →</a>
+    Hex Industries is focused on advanced aerospace engineering, autonomous systems, and next-generation defense architecture.
   </p>
-</div>
+  <div class="tagline">Innovating Tomorrow, Today.</div>
+</section>
 
-<div class="section">
-  <div class="title">Projects</div>
-  <p>Concept development of next-generation aerial systems and autonomous defense platforms.</p>
-</div>
+<!-- SYSTEMS -->
+<section class="section">
+  <h2>SYSTEMS</h2>
+  <div class="grid">
 
-<div class="section">
-  <div class="title">About</div>
-  <p>Hex Industries is an emerging aerospace and defense company focused on innovation, precision, and mission readiness.</p>
-</div>
+    <div class="card">
+      <h3>AUTONOMOUS FLIGHT</h3>
+      <p>Precision flight systems designed for adaptive mission autonomy.</p>
+    </div>
 
+    <div class="card">
+      <h3>AI NAVIGATION</h3>
+      <p>Real-time intelligent routing and aerial decision systems.</p>
+    </div>
+
+    <div class="card">
+      <h3>DEFENSE ARCHITECTURE</h3>
+      <p>Secure modular frameworks for scalable aerospace operations.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section">
+  <h2>PROJECTS</h2>
+  <div class="grid">
+
+    <div class="card">
+      <h3>HEX-CORE</h3>
+      <p>Central autonomous control system for distributed networks.</p>
+    </div>
+
+    <div class="card">
+      <h3>SKYGRID</h3>
+      <p>Multi-vehicle aerial coordination mesh framework.</p>
+    </div>
+
+    <div class="card">
+      <h3>PHANTOM LAYER</h3>
+      <p>Advanced stealth and signal optimization research system.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  © 2026 Hex Industries
+  © 2026 Hex Industries — Innovating Tomorrow, Today.
 </footer>
-
-<script>
-// scroll reveal animation
-const sections = document.querySelectorAll('.section');
-
-window.addEventListener('scroll', () => {
-  const triggerBottom = window.innerHeight * 0.85;
-
-  sections.forEach(section => {
-    const boxTop = section.getBoundingClientRect().top;
-
-    if (boxTop < triggerBottom) {
-      section.classList.add('show');
-    }
-  });
-});
-</script>
 
 </body>
 </html>
