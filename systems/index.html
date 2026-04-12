@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Systems | Hex Industries</title>
+<title>Projects | Hex Industries</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -20,7 +20,7 @@ body {
   overflow-x: hidden;
 }
 
-/* 🎥 VIDEO */
+/* 🎥 VIDEO BACKGROUND (FIXED) */
 video {
   position: fixed;
   top: 0;
@@ -30,24 +30,24 @@ video {
   object-fit: cover;
   z-index: -2;
   opacity: 0.32;
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 /* 🌑 OVERLAY */
 body::before {
   content: "";
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at top, rgba(0,0,0,0.35), rgba(0,0,0,0.90));
+  background: radial-gradient(circle at top, rgba(0,0,0,0.35), rgba(0,0,0,0.9));
   z-index: -1;
 }
 
 /* HEADER */
 header {
   padding: 25px 50px;
-  position: relative;
-  z-index: 2;
 }
 
 .logo {
@@ -65,8 +65,6 @@ header {
 /* NAV */
 nav {
   padding: 10px 50px;
-  position: relative;
-  z-index: 2;
 }
 
 nav a {
@@ -75,29 +73,29 @@ nav a {
   text-decoration: none;
   font-size: 14px;
   position: relative;
-
-  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, color;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 nav a:hover {
   color: rgba(255,255,255,0.95);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 nav a::after {
   content: "";
   position: absolute;
-  bottom: -4px;
+  bottom: -5px;
   left: 0;
-  width: 0%;
+  width: 100%;
   height: 1px;
-  background: rgba(255,255,255,0.8);
-  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(255,255,255,0.7);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 nav a:hover::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 nav a.active {
@@ -105,26 +103,24 @@ nav a.active {
 }
 
 nav a.active::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 /* HERO */
 .hero {
-  padding: 190px 50px 120px;
-  max-width: 900px;
-  position: relative;
-  z-index: 2;
+  padding: 180px 50px 120px;
+  max-width: 950px;
 }
 
-.hero-main {
+.hero-title {
   font-size: 60px;
   font-weight: 700;
   line-height: 1.05;
-  color: rgba(255,255,255,0.92);
+  color: #fff;
 
   opacity: 0;
-  transform: translateY(22px);
-  animation: fadeUp 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(25px);
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero-sub {
@@ -132,69 +128,55 @@ nav a.active::after {
   font-size: 16px;
   max-width: 650px;
   color: rgba(255,255,255,0.55);
-  line-height: 1.7;
+  line-height: 1.6;
 
   opacity: 0;
-  transform: translateY(22px);
-  animation: fadeUp 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(25px);
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   animation-delay: 0.25s;
 }
 
 /* SECTION */
 .section {
-  padding: 110px 50px;
-  max-width: 1100px;
-  position: relative;
-  z-index: 2;
-
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 100px 50px;
+  max-width: 1200px;
 }
 
-.section.show {
-  opacity: 1;
-  transform: translateY(0);
+.section-title {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 15px;
 }
 
-.title {
-  font-size: 20px;
-  margin-bottom: 25px;
-  color: rgba(255,255,255,0.85);
-}
-
-.text {
+.section-head {
+  font-size: 24px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 40px;
   max-width: 700px;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.5);
 }
 
 /* GRID */
-.cards {
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
 }
 
-/* CARD (UNCHANGED VISUAL STYLE — ONLY SAFE FIXES) */
+/* CARD */
 .card {
   padding: 28px;
   border: 1px solid rgba(255,255,255,0.06);
   background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(8px);
+
   position: relative;
   overflow: hidden;
 
-  transform: translateY(0);
-  transition:
-    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-    background 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-
-  will-change: transform;
+  transition: all 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* scan line effect (UNCHANGED) */
+/* scan line */
 .card::before {
   content: "";
   position: absolute;
@@ -202,41 +184,47 @@ nav a.active::after {
   left: -120%;
   width: 120%;
   height: 1px;
-  background: rgba(255,255,255,0.35);
-  transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(255,255,255,0.45);
+  transition: 0.8s ease;
 }
 
 .card:hover::before {
   left: 120%;
 }
 
-/* hover FIXED BUT SAME LOOK */
 .card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(255,255,255,0.22);
-  background: rgba(255,255,255,0.035);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.55);
+  transform: translateY(-10px) scale(1.01);
+  border-color: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
 }
 
-/* TEXT (UNCHANGED) */
 .card h3 {
+  font-size: 16px;
+  color: #fff;
   margin-bottom: 10px;
-  color: rgba(255,255,255,0.92);
 }
 
 .card p {
-  color: rgba(255,255,255,0.55);
   font-size: 14px;
+  color: rgba(255,255,255,0.55);
   line-height: 1.6;
+}
+
+/* STATUS */
+.status {
+  margin-top: 15px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: rgba(125,211,252,0.85);
 }
 
 /* FOOTER */
 footer {
-  padding: 50px;
+  padding: 60px 50px;
   font-size: 13px;
-  color: #666;
-  position: relative;
-  z-index: 2;
+  color: #555;
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 
 /* ANIMATION */
@@ -246,26 +234,14 @@ footer {
     transform: translateY(0);
   }
 }
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  header, nav, .hero, .section {
-    padding-left: 25px;
-    padding-right: 25px;
-  }
-
-  .hero-main {
-    font-size: 40px;
-  }
-}
 </style>
 </head>
 
 <body>
 
-<!-- FIXED VIDEO PATH (IMPORTANT) -->
+<!-- 🎥 FIXED VIDEO -->
 <video autoplay muted loop playsinline>
-  <source src="/assets/1.mp4" type="video/mp4">
+  <source src="/1.mp4" type="video/mp4">
 </video>
 
 <header>
@@ -275,81 +251,71 @@ footer {
 
 <nav>
   <a href="/home/">Home</a>
-  <a href="/systems/" class="active">Systems</a>
-  <a href="/projects/">Projects</a>
+  <a href="/systems/">Systems</a>
+  <a href="/projects/" class="active">Projects</a>
   <a href="/about/">About</a>
   <a href="/contact/">Contact</a>
 </nav>
 
 <div class="hero">
-  <div class="hero-main">
-    Systems Engineering Division
+  <div class="hero-title">
+    Active Development Programs
   </div>
   <div class="hero-sub">
-    Internal architecture framework integrating autonomous control, propulsion systems, sensor networks, and mission-critical computation layers.
+    Classified aerospace and autonomous systems under development across propulsion, AI control, and multi-domain mission architectures.
   </div>
 </div>
 
 <div class="section">
-  <div class="title">Subsystem Architecture</div>
-  <div class="text">
-    Hex Systems defines the operational backbone of all platforms, ensuring coordinated intelligence, stability, and performance across all environments.
+  <div class="section-title">PROGRAM PORTFOLIO</div>
+  <div class="section-head">
+    Current engineering initiatives in autonomous aerospace and defense-grade systems.
   </div>
-</div>
 
-<div class="section">
-  <div class="title">Core Modules</div>
+  <div class="grid">
 
-  <div class="cards">
     <div class="card">
-      <h3>Autonomy Core</h3>
-      <p>Real-time decision engine enabling independent mission execution and adaptive response behavior.</p>
+      <h3>PROJECT AERONEX</h3>
+      <p>Next-generation autonomous aerial platform designed for adaptive multi-environment operations.</p>
+      <div class="status">IN DEVELOPMENT</div>
     </div>
 
     <div class="card">
-      <h3>Propulsion Layer</h3>
-      <p>Dynamic thrust management system optimized for multi-environment mobility and efficiency.</p>
+      <h3>PROJECT VELOCITY GRID</h3>
+      <p>High-speed distributed sensor and intelligence network for real-time mission awareness.</p>
+      <div class="status">PROTOTYPING</div>
     </div>
 
     <div class="card">
-      <h3>Sensor Grid</h3>
-      <p>Distributed sensing network delivering continuous spatial and environmental awareness.</p>
+      <h3>PROJECT ORBITAL SHIFT</h3>
+      <p>Experimental propulsion framework for atmospheric-to-orbital transition systems.</p>
+      <div class="status">RESEARCH PHASE</div>
     </div>
 
     <div class="card">
-      <h3>Communication Mesh</h3>
-      <p>Secure, low-latency data exchange system linking autonomous assets in real time.</p>
+      <h3>PROJECT NEURAL COMMAND</h3>
+      <p>AI-driven mission coordination system for autonomous fleet control.</p>
+      <div class="status">ACTIVE TESTING</div>
     </div>
 
     <div class="card">
-      <h3>Structural Core</h3>
-      <p>Advanced composite architecture designed for high-stress, long-duration operational integrity.</p>
+      <h3>PROJECT STRATOS CORE</h3>
+      <p>Structural aerospace platform optimized for extreme altitude endurance missions.</p>
+      <div class="status">DESIGN STAGE</div>
     </div>
 
     <div class="card">
-      <h3>Mission OS</h3>
-      <p>Central coordination layer managing system synchronization and operational logic execution.</p>
+      <h3>PROJECT NIGHTFALL LINK</h3>
+      <p>Encrypted communication backbone for secure multi-domain operations.</p>
+      <div class="status">SIMULATION</div>
     </div>
+
   </div>
 </div>
 
 <footer>
-  © 2026 Hex Industries — System Division
+  © 2026 Hex Industries — Project Division
 </footer>
-
-<script>
-const sections = document.querySelectorAll('.section');
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
-  });
-}, { threshold: 0.15 });
-
-sections.forEach(sec => observer.observe(sec));
-</script>
 
 </body>
 </html>
