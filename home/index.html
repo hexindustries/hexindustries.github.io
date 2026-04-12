@@ -20,7 +20,7 @@ body {
   overflow-x: hidden;
 }
 
-/* 🎥 VIDEO BACKGROUND (same as contact) */
+/* 🎥 VIDEO BACKGROUND (FIXED) */
 .video-bg {
   position: fixed;
   top: 0;
@@ -59,7 +59,7 @@ header {
   color: #777;
 }
 
-/* NAV (same style as contact) */
+/* NAV */
 nav {
   padding: 10px 50px;
 }
@@ -70,7 +70,6 @@ nav a {
   text-decoration: none;
   font-size: 14px;
   position: relative;
-
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -104,7 +103,7 @@ nav a.active::after {
   transform: scaleX(1);
 }
 
-/* HERO (same structure, contact-style animation) */
+/* HERO */
 .hero {
   padding: 180px 50px 120px;
   max-width: 900px;
@@ -159,12 +158,6 @@ nav a.active::after {
   margin-bottom: 15px;
 }
 
-.text {
-  max-width: 750px;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.55);
-}
-
 /* GRID */
 .grid {
   display: grid;
@@ -173,7 +166,7 @@ nav a.active::after {
   margin-top: 40px;
 }
 
-/* 🔥 EXACT SAME CARD AS CONTACT PAGE */
+/* CARD (IDENTICAL STYLE ACROSS ALL PAGES) */
 .card {
   padding: 28px;
   border: 1px solid rgba(255,255,255,0.06);
@@ -186,7 +179,7 @@ nav a.active::after {
   transition: all 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* scan line (IDENTICAL) */
+/* scan line */
 .card::before {
   content: "";
   position: absolute;
@@ -202,7 +195,6 @@ nav a.active::after {
   left: 120%;
 }
 
-/* 🔥 EXACT SAME HOVER BEHAVIOR */
 .card:hover {
   transform: translateY(-10px) scale(1.01);
   border-color: rgba(255,255,255,0.18);
@@ -242,9 +234,9 @@ footer {
 
 <body>
 
-<!-- VIDEO (IMPORTANT FIX: adjust path if needed) -->
+<!-- 🎥 FIXED VIDEO -->
 <video class="video-bg" autoplay muted loop playsinline>
-  <source src="/assets/hero.mp4" type="video/mp4">
+  <source src="/1.mp4" type="video/mp4">
 </video>
 
 <header>
