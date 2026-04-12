@@ -20,7 +20,7 @@ body {
   overflow-x: hidden;
 }
 
-/* 🎥 VIDEO BACKGROUND */
+/* 🎥 VIDEO BACKGROUND (FIXED + RELIABLE) */
 video {
   position: fixed;
   top: 0;
@@ -163,7 +163,7 @@ nav a.active::after {
   color: rgba(255,255,255,0.55);
 }
 
-/* STATUS PANELS */
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -171,6 +171,7 @@ nav a.active::after {
   margin-top: 40px;
 }
 
+/* CARD (UNCHANGED UI) */
 .card {
   padding: 28px;
   border: 1px solid rgba(255,255,255,0.06);
@@ -218,7 +219,7 @@ nav a.active::after {
   line-height: 1.6;
 }
 
-/* STATUS LABELS */
+/* STATUS */
 .status {
   margin-top: 15px;
   font-size: 11px;
@@ -246,8 +247,9 @@ footer {
 
 <body>
 
-<!-- VIDEO -->
+<!-- 🚀 FIXED VIDEO (MULTI-PATH SAFE) -->
 <video autoplay muted loop playsinline>
+  <source src="/assets/1.mp4" type="video/mp4">
   <source src="1.mp4" type="video/mp4">
 </video>
 
@@ -265,9 +267,7 @@ footer {
 </nav>
 
 <div class="hero">
-  <div class="hero-title">
-    Communication Systems
-  </div>
+  <div class="hero-title">Communication Systems</div>
   <div class="hero-sub">
     External communication channels are currently under restricted development within secure engineering environments.
   </div>
@@ -275,11 +275,11 @@ footer {
 
 <div class="section">
   <div class="title">ACCESS STATUS</div>
-  <div class="headline">
-    Public communication channels are not yet active.
-  </div>
+
+  <div class="headline">Public communication channels are not yet active.</div>
+
   <div class="text">
-    Hex Industries is currently operating in a closed development phase. External communication interfaces will be enabled after initial system validation and security architecture finalization.
+    Hex Industries is currently operating in a closed development phase. External communication interfaces will be enabled after system validation.
   </div>
 
   <div class="grid">
